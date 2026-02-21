@@ -10,6 +10,8 @@ import 'package:template/src/core/services/storage/i_local_storage_service.dart'
 import 'package:template/src/core/services/storage/local_storage_service.dart';
 import 'package:template/src/core/utils/api_end_points.dart';
 import 'package:template/src/data/repositories/auth_repository.dart';
+import 'package:template/src/data/repositories/home_repository.dart';
+import 'package:template/src/domain/repositories/i_home_repositoty.dart';
 import 'package:template/src/domain/usecase/signin_usecase.dart';
 import 'package:template/src/domain/usecase/signup_usecase.dart';
 import 'package:template/src/data/repositories/profile_repository.dart';

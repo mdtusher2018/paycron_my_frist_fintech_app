@@ -11,3 +11,8 @@ IAuthRepository authRepository(Ref ref) {
 IProfileRepository profileRepository(Ref ref) {
   return ProfileRepository(ref.watch(apiServiceProvider));
 }
+
+@riverpod
+IHomeRepository homeRepository(Ref ref) {
+  return HomeRepository(ref.watch(apiServiceProvider));
+}
