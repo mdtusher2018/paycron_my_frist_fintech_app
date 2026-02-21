@@ -1,0 +1,51 @@
+name: template
+description: "A new Flutter project."
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  cupertino_icons: ^1.0.8
+  dio: ^5.9.0
+  flutter_secure_storage: ^9.2.4
+  shared_preferences: ^2.5.3
+  flutter_riverpod: ^2.6.1
+  flutter_screenutil: ^5.9.3
+  logger: ^2.6.2
+  go_router: ^17.0.0
+  rive: ^0.13.20
+  riverpod_annotation: ^2.3.5
+  freezed_annotation: ^3.0.0
+  json_annotation: 
+
+
+  
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+ 
+  flutter_lints: ^5.0.0
+  mocktail: ^1.0.4
+  freezed:
+  build_runner: ^2.5.4 
+  riverpod_generator: 
+  json_serializable:
+  test:
+  mockito: 
+  dartz: ^0.10.1
+
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assest/3469-7899-login-screen-character.riv
