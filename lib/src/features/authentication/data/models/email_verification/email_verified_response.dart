@@ -5,11 +5,11 @@ part 'email_verified_response.g.dart';
 @freezed
 abstract class EmailVerifiedResponse with _$EmailVerifiedResponse {
   const factory EmailVerifiedResponse({
-    required String status,
     required int statusCode,
+    required bool status,
     required String message,
     required String accessToken,
-    @Default([]) List<dynamic> errors,
+    required String refreshToken,
   }) = _EmailVerifiedResponse;
 
   factory EmailVerifiedResponse.fromJson(Map<String, dynamic> json) =>

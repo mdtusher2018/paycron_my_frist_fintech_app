@@ -5,10 +5,10 @@ part 'signup_response.g.dart';
 @freezed
 abstract class SignupResponse with _$SignupResponse {
   const factory SignupResponse({
-    required String status,
     required int statusCode,
+    required bool status,
     required String message,
-    required SignupData data,
+    required String token,
     @Default([]) List<dynamic> errors,
   }) = _SignupResponse;
 

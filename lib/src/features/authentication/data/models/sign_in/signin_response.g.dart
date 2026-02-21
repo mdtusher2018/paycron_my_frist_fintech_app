@@ -8,11 +8,10 @@ part of 'signin_response.dart';
 
 _SigninResponse _$SigninResponseFromJson(Map<String, dynamic> json) =>
     _SigninResponse(
-      status: json['status'] as String,
+      status: json['status'] as bool,
       statusCode: (json['statusCode'] as num).toInt(),
       message: json['message'] as String,
-      token: json['token'] as String,
-      errors: json['errors'] as List<dynamic>,
+      data: SigninData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SigninResponseToJson(_SigninResponse instance) =>
@@ -20,6 +19,16 @@ Map<String, dynamic> _$SigninResponseToJson(_SigninResponse instance) =>
       'status': instance.status,
       'statusCode': instance.statusCode,
       'message': instance.message,
-      'token': instance.token,
-      'errors': instance.errors,
+      'data': instance.data,
+    };
+
+_SigninData _$SigninDataFromJson(Map<String, dynamic> json) => _SigninData(
+  accessToken: json['accessToken'] as String,
+  refreshToken: json['refreshToken'] as String,
+);
+
+Map<String, dynamic> _$SigninDataToJson(_SigninData instance) =>
+    <String, dynamic>{
+      'accessToken': instance.accessToken,
+      'refreshToken': instance.refreshToken,
     };

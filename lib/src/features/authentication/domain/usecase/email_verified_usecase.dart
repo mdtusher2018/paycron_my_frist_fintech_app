@@ -33,9 +33,8 @@ class EmailVerifiedUsecase {
     }
 
     final emailVerifiedEntity = EmailVerifiedEntity(
-      accessToken: ((response as Success).data as EmailVerifiedResponse)
-          .data
-          .accessToken,
+      accessToken:
+          ((response as Success).data as EmailVerifiedResponse).accessToken,
     );
 
     localStorage.saveKey(

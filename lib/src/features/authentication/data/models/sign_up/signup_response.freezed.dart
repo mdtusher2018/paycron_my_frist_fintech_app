@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SignupResponse {
 
- String get status; int get statusCode; String get message; SignupData get data; List<dynamic> get errors;
+ int get statusCode; bool get status; String get message; String get token; List<dynamic> get errors;
 /// Create a copy of SignupResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $SignupResponseCopyWith<SignupResponse> get copyWith => _$SignupResponseCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignupResponse&&(identical(other.status, status) || other.status == status)&&(identical(other.statusCode, statusCode) || other.statusCode == statusCode)&&(identical(other.message, message) || other.message == message)&&(identical(other.data, data) || other.data == data)&&const DeepCollectionEquality().equals(other.errors, errors));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SignupResponse&&(identical(other.statusCode, statusCode) || other.statusCode == statusCode)&&(identical(other.status, status) || other.status == status)&&(identical(other.message, message) || other.message == message)&&(identical(other.token, token) || other.token == token)&&const DeepCollectionEquality().equals(other.errors, errors));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,status,statusCode,message,data,const DeepCollectionEquality().hash(errors));
+int get hashCode => Object.hash(runtimeType,statusCode,status,message,token,const DeepCollectionEquality().hash(errors));
 
 @override
 String toString() {
-  return 'SignupResponse(status: $status, statusCode: $statusCode, message: $message, data: $data, errors: $errors)';
+  return 'SignupResponse(statusCode: $statusCode, status: $status, message: $message, token: $token, errors: $errors)';
 }
 
 
@@ -48,11 +48,11 @@ abstract mixin class $SignupResponseCopyWith<$Res>  {
   factory $SignupResponseCopyWith(SignupResponse value, $Res Function(SignupResponse) _then) = _$SignupResponseCopyWithImpl;
 @useResult
 $Res call({
- String status, int statusCode, String message, SignupData data, List<dynamic> errors
+ int statusCode, bool status, String message, String token, List<dynamic> errors
 });
 
 
-$SignupDataCopyWith<$Res> get data;
+
 
 }
 /// @nodoc
@@ -65,26 +65,17 @@ class _$SignupResponseCopyWithImpl<$Res>
 
 /// Create a copy of SignupResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? statusCode = null,Object? message = null,Object? data = null,Object? errors = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? statusCode = null,Object? status = null,Object? message = null,Object? token = null,Object? errors = null,}) {
   return _then(_self.copyWith(
-status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as String,statusCode: null == statusCode ? _self.statusCode : statusCode // ignore: cast_nullable_to_non_nullable
-as int,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as SignupData,errors: null == errors ? _self.errors : errors // ignore: cast_nullable_to_non_nullable
+statusCode: null == statusCode ? _self.statusCode : statusCode // ignore: cast_nullable_to_non_nullable
+as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as bool,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String,errors: null == errors ? _self.errors : errors // ignore: cast_nullable_to_non_nullable
 as List<dynamic>,
   ));
 }
-/// Create a copy of SignupResponse
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$SignupDataCopyWith<$Res> get data {
-  
-  return $SignupDataCopyWith<$Res>(_self.data, (value) {
-    return _then(_self.copyWith(data: value));
-  });
-}
+
 }
 
 
@@ -166,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String status,  int statusCode,  String message,  SignupData data,  List<dynamic> errors)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int statusCode,  bool status,  String message,  String token,  List<dynamic> errors)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SignupResponse() when $default != null:
-return $default(_that.status,_that.statusCode,_that.message,_that.data,_that.errors);case _:
+return $default(_that.statusCode,_that.status,_that.message,_that.token,_that.errors);case _:
   return orElse();
 
 }
@@ -187,10 +178,10 @@ return $default(_that.status,_that.statusCode,_that.message,_that.data,_that.err
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String status,  int statusCode,  String message,  SignupData data,  List<dynamic> errors)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int statusCode,  bool status,  String message,  String token,  List<dynamic> errors)  $default,) {final _that = this;
 switch (_that) {
 case _SignupResponse():
-return $default(_that.status,_that.statusCode,_that.message,_that.data,_that.errors);case _:
+return $default(_that.statusCode,_that.status,_that.message,_that.token,_that.errors);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -207,10 +198,10 @@ return $default(_that.status,_that.statusCode,_that.message,_that.data,_that.err
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String status,  int statusCode,  String message,  SignupData data,  List<dynamic> errors)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int statusCode,  bool status,  String message,  String token,  List<dynamic> errors)?  $default,) {final _that = this;
 switch (_that) {
 case _SignupResponse() when $default != null:
-return $default(_that.status,_that.statusCode,_that.message,_that.data,_that.errors);case _:
+return $default(_that.statusCode,_that.status,_that.message,_that.token,_that.errors);case _:
   return null;
 
 }
@@ -222,13 +213,13 @@ return $default(_that.status,_that.statusCode,_that.message,_that.data,_that.err
 @JsonSerializable()
 
 class _SignupResponse implements SignupResponse {
-  const _SignupResponse({required this.status, required this.statusCode, required this.message, required this.data, final  List<dynamic> errors = const []}): _errors = errors;
+  const _SignupResponse({required this.statusCode, required this.status, required this.message, required this.token, final  List<dynamic> errors = const []}): _errors = errors;
   factory _SignupResponse.fromJson(Map<String, dynamic> json) => _$SignupResponseFromJson(json);
 
-@override final  String status;
 @override final  int statusCode;
+@override final  bool status;
 @override final  String message;
-@override final  SignupData data;
+@override final  String token;
  final  List<dynamic> _errors;
 @override@JsonKey() List<dynamic> get errors {
   if (_errors is EqualUnmodifiableListView) return _errors;
@@ -250,16 +241,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SignupResponse&&(identical(other.status, status) || other.status == status)&&(identical(other.statusCode, statusCode) || other.statusCode == statusCode)&&(identical(other.message, message) || other.message == message)&&(identical(other.data, data) || other.data == data)&&const DeepCollectionEquality().equals(other._errors, _errors));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SignupResponse&&(identical(other.statusCode, statusCode) || other.statusCode == statusCode)&&(identical(other.status, status) || other.status == status)&&(identical(other.message, message) || other.message == message)&&(identical(other.token, token) || other.token == token)&&const DeepCollectionEquality().equals(other._errors, _errors));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,status,statusCode,message,data,const DeepCollectionEquality().hash(_errors));
+int get hashCode => Object.hash(runtimeType,statusCode,status,message,token,const DeepCollectionEquality().hash(_errors));
 
 @override
 String toString() {
-  return 'SignupResponse(status: $status, statusCode: $statusCode, message: $message, data: $data, errors: $errors)';
+  return 'SignupResponse(statusCode: $statusCode, status: $status, message: $message, token: $token, errors: $errors)';
 }
 
 
@@ -270,11 +261,11 @@ abstract mixin class _$SignupResponseCopyWith<$Res> implements $SignupResponseCo
   factory _$SignupResponseCopyWith(_SignupResponse value, $Res Function(_SignupResponse) _then) = __$SignupResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String status, int statusCode, String message, SignupData data, List<dynamic> errors
+ int statusCode, bool status, String message, String token, List<dynamic> errors
 });
 
 
-@override $SignupDataCopyWith<$Res> get data;
+
 
 }
 /// @nodoc
@@ -287,27 +278,18 @@ class __$SignupResponseCopyWithImpl<$Res>
 
 /// Create a copy of SignupResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? statusCode = null,Object? message = null,Object? data = null,Object? errors = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? statusCode = null,Object? status = null,Object? message = null,Object? token = null,Object? errors = null,}) {
   return _then(_SignupResponse(
-status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as String,statusCode: null == statusCode ? _self.statusCode : statusCode // ignore: cast_nullable_to_non_nullable
-as int,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as SignupData,errors: null == errors ? _self._errors : errors // ignore: cast_nullable_to_non_nullable
+statusCode: null == statusCode ? _self.statusCode : statusCode // ignore: cast_nullable_to_non_nullable
+as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as bool,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String,errors: null == errors ? _self._errors : errors // ignore: cast_nullable_to_non_nullable
 as List<dynamic>,
   ));
 }
 
-/// Create a copy of SignupResponse
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$SignupDataCopyWith<$Res> get data {
-  
-  return $SignupDataCopyWith<$Res>(_self.data, (value) {
-    return _then(_self.copyWith(data: value));
-  });
-}
+
 }
 
 

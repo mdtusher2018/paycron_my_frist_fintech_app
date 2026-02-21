@@ -8,13 +8,23 @@ part 'signin_response.g.dart';
 @freezed
 abstract class SigninResponse with _$SigninResponse {
   const factory SigninResponse({
-    required String status,
+    required bool status,
     required int statusCode,
     required String message,
-    required String token,
-    required List<dynamic> errors,
+    required SigninData data,
   }) = _SigninResponse;
 
   factory SigninResponse.fromJson(Map<String, dynamic> json) =>
       _$SigninResponseFromJson(json);
+}
+
+@freezed
+abstract class SigninData with _$SigninData {
+  const factory SigninData({
+    required String accessToken,
+    required String refreshToken,
+  }) = _SigninData;
+
+  factory SigninData.fromJson(Map<String, dynamic> json) =>
+      _$SigninDataFromJson(json);
 }

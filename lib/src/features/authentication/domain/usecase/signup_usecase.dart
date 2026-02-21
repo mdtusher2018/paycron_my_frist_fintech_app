@@ -83,8 +83,7 @@ class SignupUseCase {
     }
 
     final signupEntity = SignupEntity(
-      signUpToken:
-          ((response as Success).data! as SignupResponse).data.signUpToken,
+      signUpToken: ((response as Success).data! as SignupResponse).token,
     );
 
     // 🔹 Save token locally

@@ -9,19 +9,19 @@ part of 'email_verified_response.dart';
 _EmailVerifiedResponse _$EmailVerifiedResponseFromJson(
   Map<String, dynamic> json,
 ) => _EmailVerifiedResponse(
-  status: json['status'] as String,
   statusCode: (json['statusCode'] as num).toInt(),
+  status: json['status'] as bool,
   message: json['message'] as String,
   accessToken: json['accessToken'] as String,
-  errors: json['errors'] as List<dynamic>? ?? const [],
+  refreshToken: json['refreshToken'] as String,
 );
 
 Map<String, dynamic> _$EmailVerifiedResponseToJson(
   _EmailVerifiedResponse instance,
 ) => <String, dynamic>{
-  'status': instance.status,
   'statusCode': instance.statusCode,
+  'status': instance.status,
   'message': instance.message,
   'accessToken': instance.accessToken,
-  'errors': instance.errors,
+  'refreshToken': instance.refreshToken,
 };
