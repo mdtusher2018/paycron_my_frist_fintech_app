@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:template/src/config/router/app_router.dart';
 import 'src/core/di/dependency_injection.dart';
 import 'package:template/src/core/services/snackbar/snackbar_service.dart';
@@ -9,7 +12,17 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   LocalStorageService().init();
+  FlutterError.onError = (FlutterErrorDetails details) {
+    // Log the error to console
+    log(
+      'Flutter Error: ${details.exception}',
+      stackTrace: details.stack,
+      name: 'FlutterError',
+    );
 
+    // Optionally, show error via SnackBar
+    // You can access the SnackBarService later in the widget tree
+  };
   runApp(ProviderScope(child: MyApp()));
 }
 
@@ -20,12 +33,15 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final snackBarService = ref.read(snackBarServiceProvider);
     final router = ref.watch(appRouterProvider);
-    return MaterialApp.router(
-      scaffoldMessengerKey: (snackBarService as SnackBarService).messengerKey,
-      title: 'Template App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      routerConfig: router,
+    return ScreenUtilInit(
+       designSize: const Size(360, 690),
+      child: MaterialApp.router(
+        scaffoldMessengerKey: (snackBarService as SnackBarService).messengerKey,
+        title: 'Template App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(primarySwatch: Colors.blue),
+        routerConfig: router,
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:template/unorganized_files/home_page.dart';
+import 'package:template/src/presentation/features/home/home_view.dart';
+
 
 class RootView extends StatefulWidget {
   const RootView({super.key});

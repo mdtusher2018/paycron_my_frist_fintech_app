@@ -7,6 +7,8 @@ import 'package:rive/rive.dart';
 import 'package:template/src/config/router/routes.dart';
 import 'package:template/src/domain/entites/signin_entity.dart';
 import 'package:template/src/presentation/features/authentication/notifiers/signin_notifier.dart';
+import 'package:template/src/presentation/shared/widgets/common_button.dart';
+import 'package:template/src/presentation/shared/widgets/common_text_field_with_title.dart';
 
 // Define a class to hold both the Rive animation state and the controller
 class RiveState {
@@ -73,7 +75,7 @@ final _riveAnimationProvider =
 class SigninPage extends ConsumerWidget {
   SigninPage({super.key});
 
-  final emailCtrl = TextEditingController(text: "xokekek289@bablace.com");
+  final emailCtrl = TextEditingController(text: "tusher@gmail.com");
   final passCtrl = TextEditingController(text: "hello123");
 
   @override
@@ -102,31 +104,33 @@ class SigninPage extends ConsumerWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // SizedBox(
-            //   height: 450,
-            //   child: RiveAnimation.asset(
-            //     "assest/3469-7899-login-screen-character.riv",
-            //     artboard: "Artboard",
-            //     fit: BoxFit.cover,
-            //     onInit: (Artboard artboard) {
-            //       final controller = StateMachineController.fromArtboard(
-            //         artboard,
-            //         'State Machine 1',
-            //       );
-            //       if (controller != null) {
-            //         artboard.addController(controller);
-            //         riveAnimationController.setController(controller);
-            //       }
-            //     },
-            //   ),
-            // ),
+            SizedBox(
+              height: 450,
+              child: RiveAnimation.asset(
+                "assest/3469-7899-login-screen-character.riv",
+                artboard: "Artboard",
+                fit: BoxFit.cover,
+                onInit: (Artboard artboard) {
+                  final controller = StateMachineController.fromArtboard(
+                    artboard,
+                    'State Machine 1',
+                  );
+                  if (controller != null) {
+                    artboard.addController(controller);
+                    riveAnimationController.setController(controller);
+                  }
+                },
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 spacing: 16,
                 children: [
-                  TextField(
-                    onChanged: (value) {
+                  CommonTextfieldWithTitle(
+                    "Email",
+                    emailCtrl,
+                    onChnage: (value) {
                       ref
                           .read(_riveAnimationProvider.notifier)
                           .setLookingDown(true);
@@ -142,7 +146,7 @@ class SigninPage extends ConsumerWidget {
                           .read(_riveAnimationProvider.notifier)
                           .setLookLeftRight(value.length * 2.0);
                     },
-                    onSubmitted: (_) {
+                    onsubmit: (_) {
                       ref
                           .read(_riveAnimationProvider.notifier)
                           .setLookingDown(false);
@@ -150,26 +154,9 @@ class SigninPage extends ConsumerWidget {
                           .read(_riveAnimationProvider.notifier)
                           .setHandsUp(false);
                     },
-
-                    controller: emailCtrl,
-
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      labelStyle: TextStyle(color: Colors.black),
-                      filled: true,
-                      fillColor: Colors.cyan.withOpacity(0.1),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide.none,
-                      ),
-                      contentPadding: const EdgeInsets.symmetric(
-                        vertical: 16.0,
-                        horizontal: 20.0,
-                      ),
-                    ),
                   ),
-                  TextField(
-                    onChanged: (value) {
+                  CommonTextfieldWithTitle("Password",
+                    onChnage: (value) {
                       ref
                           .read(_riveAnimationProvider.notifier)
                           .setHandsUp(true);
@@ -179,73 +166,43 @@ class SigninPage extends ConsumerWidget {
                             .setHandsUp(false);
                       }
                     },
-                    onSubmitted: (_) {
+                    onsubmit: (_) {
                       ref
                           .read(_riveAnimationProvider.notifier)
                           .setHandsUp(false);
                     },
 
-                    controller: passCtrl,
-                    obscureText: true,
+                     passCtrl,
 
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      labelStyle: TextStyle(color: Colors.black),
-                      filled: true,
-                      fillColor: Colors.cyan.withOpacity(0.1),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide.none,
-                      ),
-                      contentPadding: const EdgeInsets.symmetric(
-                        vertical: 16.0,
-                        horizontal: 20.0,
-                      ),
-                    ),
+                   
                   ),
                   const SizedBox(height: 20),
-                  signinState.isLoading
-                      ? const CircularProgressIndicator()
-                      : ElevatedButton(
-                          onPressed: () {
-                            ref
-                                .read(loginNotifierProvider.notifier)
-                                .login(
-                                  email: emailCtrl.text.trim(),
-                                  password: passCtrl.text.trim(),
-                                );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.cyan.shade50,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                            padding: const EdgeInsets.symmetric(vertical: 16.0),
-                            minimumSize: const Size(double.infinity, 60),
-                          ),
-                          child: const Text(
-                            "Login",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
+
+                  CommonButton(
+                    "Login",
+                    isLoading: signinState.isLoading,
+                    onTap: () {
+                      ref
+                          .read(loginNotifierProvider.notifier)
+                          .login(
+                            email: emailCtrl.text.trim(),
+                            password: passCtrl.text.trim(),
+                          );
+                    },
+                  ),
                   if (signinState.hasError)
                     Text(
                       signinState.error.toString(),
                       style: const TextStyle(color: Colors.red),
                     ),
 
-SizedBox(height:8),
-InkWell(
-  onTap: (){
-    context.go(AppRoutes.signUp);
-  },
-  child: Text("Go to Signup"))
-
-
-
+                  SizedBox(height: 8),
+                  InkWell(
+                    onTap: () {
+                      context.go(AppRoutes.signUp);
+                    },
+                    child: Text("Go to Signup"),
+                  ),
                 ],
               ),
             ),

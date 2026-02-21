@@ -9,13 +9,10 @@ part of 'create_transaction_response.dart';
 _CreateTransactionResponse _$CreateTransactionResponseFromJson(
   Map<String, dynamic> json,
 ) => _CreateTransactionResponse(
-  statusCode: (json['statusCode'] as num).toInt(),
+  message: json['message'] as String,
   status: json['status'] as bool,
 );
 
 Map<String, dynamic> _$CreateTransactionResponseToJson(
   _CreateTransactionResponse instance,
-) => <String, dynamic>{
-  'statusCode': instance.statusCode,
-  'status': instance.status,
-};
+) => <String, dynamic>{'message': instance.message, 'status': instance.status};

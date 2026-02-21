@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateTransactionResponse {
 
- int get statusCode; bool get status;
+ String get message; bool get status;
 /// Create a copy of CreateTransactionResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $CreateTransactionResponseCopyWith<CreateTransactionResponse> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTransactionResponse&&(identical(other.statusCode, statusCode) || other.statusCode == statusCode)&&(identical(other.status, status) || other.status == status));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTransactionResponse&&(identical(other.message, message) || other.message == message)&&(identical(other.status, status) || other.status == status));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,statusCode,status);
+int get hashCode => Object.hash(runtimeType,message,status);
 
 @override
 String toString() {
-  return 'CreateTransactionResponse(statusCode: $statusCode, status: $status)';
+  return 'CreateTransactionResponse(message: $message, status: $status)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $CreateTransactionResponseCopyWith<$Res>  {
   factory $CreateTransactionResponseCopyWith(CreateTransactionResponse value, $Res Function(CreateTransactionResponse) _then) = _$CreateTransactionResponseCopyWithImpl;
 @useResult
 $Res call({
- int statusCode, bool status
+ String message, bool status
 });
 
 
@@ -65,10 +65,10 @@ class _$CreateTransactionResponseCopyWithImpl<$Res>
 
 /// Create a copy of CreateTransactionResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? statusCode = null,Object? status = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? message = null,Object? status = null,}) {
   return _then(_self.copyWith(
-statusCode: null == statusCode ? _self.statusCode : statusCode // ignore: cast_nullable_to_non_nullable
-as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -154,10 +154,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int statusCode,  bool status)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String message,  bool status)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTransactionResponse() when $default != null:
-return $default(_that.statusCode,_that.status);case _:
+return $default(_that.message,_that.status);case _:
   return orElse();
 
 }
@@ -175,10 +175,10 @@ return $default(_that.statusCode,_that.status);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int statusCode,  bool status)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String message,  bool status)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTransactionResponse():
-return $default(_that.statusCode,_that.status);case _:
+return $default(_that.message,_that.status);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -195,10 +195,10 @@ return $default(_that.statusCode,_that.status);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int statusCode,  bool status)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String message,  bool status)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTransactionResponse() when $default != null:
-return $default(_that.statusCode,_that.status);case _:
+return $default(_that.message,_that.status);case _:
   return null;
 
 }
@@ -210,10 +210,10 @@ return $default(_that.statusCode,_that.status);case _:
 @JsonSerializable()
 
 class _CreateTransactionResponse implements CreateTransactionResponse {
-  const _CreateTransactionResponse({required this.statusCode, required this.status});
+  const _CreateTransactionResponse({required this.message, required this.status});
   factory _CreateTransactionResponse.fromJson(Map<String, dynamic> json) => _$CreateTransactionResponseFromJson(json);
 
-@override final  int statusCode;
+@override final  String message;
 @override final  bool status;
 
 /// Create a copy of CreateTransactionResponse
@@ -229,16 +229,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTransactionResponse&&(identical(other.statusCode, statusCode) || other.statusCode == statusCode)&&(identical(other.status, status) || other.status == status));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTransactionResponse&&(identical(other.message, message) || other.message == message)&&(identical(other.status, status) || other.status == status));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,statusCode,status);
+int get hashCode => Object.hash(runtimeType,message,status);
 
 @override
 String toString() {
-  return 'CreateTransactionResponse(statusCode: $statusCode, status: $status)';
+  return 'CreateTransactionResponse(message: $message, status: $status)';
 }
 
 
@@ -249,7 +249,7 @@ abstract mixin class _$CreateTransactionResponseCopyWith<$Res> implements $Creat
   factory _$CreateTransactionResponseCopyWith(_CreateTransactionResponse value, $Res Function(_CreateTransactionResponse) _then) = __$CreateTransactionResponseCopyWithImpl;
 @override @useResult
 $Res call({
- int statusCode, bool status
+ String message, bool status
 });
 
 
@@ -266,10 +266,10 @@ class __$CreateTransactionResponseCopyWithImpl<$Res>
 
 /// Create a copy of CreateTransactionResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? statusCode = null,Object? status = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,Object? status = null,}) {
   return _then(_CreateTransactionResponse(
-statusCode: null == statusCode ? _self.statusCode : statusCode // ignore: cast_nullable_to_non_nullable
-as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

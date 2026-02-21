@@ -8,6 +8,8 @@ class AppRoutes {
   static const String resetPassword = '/reset-password';
 
   static const String home = '/home';
+  static const String sendMoney = '/send-money';
+  static const String addMoney = '/add-money';
 
   static const String profile = '/profile';
 

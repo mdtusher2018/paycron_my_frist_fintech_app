@@ -6,7 +6,7 @@ part 'create_transaction_response.g.dart';
 @freezed
 abstract class CreateTransactionResponse with _$CreateTransactionResponse {
   const factory CreateTransactionResponse({
-    required int statusCode,
+    required String message,
     required bool status,
   }) = _CreateTransactionResponse;
 

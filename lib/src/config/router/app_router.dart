@@ -3,10 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:template/src/presentation/features/authentication/pages/email_verification_page.dart';
 import 'package:template/src/presentation/features/authentication/pages/signin_page.dart';
 import 'package:template/src/presentation/features/authentication/pages/signup_page.dart';
+import 'package:template/src/presentation/features/home/add_money_view.dart';
+import 'package:template/src/presentation/features/home/home_view.dart';
+import 'package:template/src/presentation/features/home/send_money_view.dart';
 import 'package:template/src/presentation/features/profile/page/profile_page.dart';
 import 'package:template/unorganized_files/all_page.dart';
-
-import '../../../unorganized_files/home_page.dart';
 import 'routes.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
@@ -39,6 +40,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.profile,
         builder: (context, state) => const ProfilePage(),
+      ),
+      GoRoute(
+        path: AppRoutes.sendMoney,
+        builder: (context, state) => const SendMoneyPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.addMoney,
+        builder: (context, state) =>  AddMoneyPage(),
       ),
     ],
   );

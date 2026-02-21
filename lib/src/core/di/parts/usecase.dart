@@ -23,3 +23,9 @@ EmailVerifiedUsecase emailVerifiedUsecase(Ref ref) {
     localStorage: ref.watch(localStorageProvider),
   );
 }
+@riverpod
+HomeUsecase homeUsecase(Ref ref) {
+  return HomeUsecase(
+    repository: ref.read(homeRepositoryProvider),
+  );
+}

@@ -109,6 +109,23 @@ final profileRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef ProfileRepositoryRef = AutoDisposeProviderRef<IProfileRepository>;
+String _$homeRepositoryHash() => r'd42c4613292e5126674b12ac8331a05c93c62b0a';
+
+/// See also [homeRepository].
+@ProviderFor(homeRepository)
+final homeRepositoryProvider = AutoDisposeProvider<IHomeRepository>.internal(
+  homeRepository,
+  name: r'homeRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$homeRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef HomeRepositoryRef = AutoDisposeProviderRef<IHomeRepository>;
 String _$loginUseCaseHash() => r'163df60300194b03596a94b15320fe1fa534d4a3';
 
 /// See also [loginUseCase].
@@ -162,5 +179,22 @@ final emailVerifiedUsecaseProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef EmailVerifiedUsecaseRef = AutoDisposeProviderRef<EmailVerifiedUsecase>;
+String _$homeUsecaseHash() => r'6db5cabd6132978de15232893d83d0de8bb3c315';
+
+/// See also [homeUsecase].
+@ProviderFor(homeUsecase)
+final homeUsecaseProvider = AutoDisposeProvider<HomeUsecase>.internal(
+  homeUsecase,
+  name: r'homeUsecaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$homeUsecaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef HomeUsecaseRef = AutoDisposeProviderRef<HomeUsecase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

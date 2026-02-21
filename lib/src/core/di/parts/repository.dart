@@ -14,5 +14,5 @@ IProfileRepository profileRepository(Ref ref) {
 
 @riverpod
 IHomeRepository homeRepository(Ref ref) {
-  return HomeRepository(ref.watch(apiServiceProvider));
+  return HomeRepository(ref.watch(apiServiceProvider),ref.watch(localStorageProvider));
 }

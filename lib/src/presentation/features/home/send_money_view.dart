@@ -1,37 +1,82 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:template/src/core/base/result.dart';
+import 'package:template/src/core/base/failure.dart';
 
-class SendMoneyPage extends StatefulWidget {
+import 'package:template/src/presentation/features/home/home_view_notifier.dart';
+import 'package:template/src/core/di/dependency_injection.dart';
+
+class SendMoneyPage extends ConsumerWidget {
   const SendMoneyPage({super.key});
 
   @override
-  State<SendMoneyPage> createState() => _SendMoneyPageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final emailController = TextEditingController();
+    final amountController = TextEditingController();
+    final homeUsecase = ref.read(homeUsecaseProvider);
 
-class _SendMoneyPageState extends State<SendMoneyPage> {
-  final _formKey = GlobalKey<FormState>();
+    Future<void> sendMoney() async {
+      final email = emailController.text.trim();
+      final amountText = amountController.text.trim();
 
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController amountController = TextEditingController();
+      // Inline validation
+      if (email.isEmpty || !email.contains("@")) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Please enter a valid email")),
+        );
+        return;
+      }
+      if (amountText.isEmpty || double.tryParse(amountText) == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Please enter a valid amount")),
+        );
+        return;
+      }
 
-  @override
-  void dispose() {
-    emailController.dispose();
-    amountController.dispose();
-    super.dispose();
-  }
+      final amount = double.parse(amountText);
 
-  void _sendMoney() {
-    if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Money Sent Successfully!"),
-        ),
+      // Show loading
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (_) => const Center(child: CircularProgressIndicator()),
       );
-    }
-  }
 
-  @override
-  Widget build(BuildContext context) {
+      final result = await homeUsecase.sendMoney(
+        amount: amount,
+        reciverEmail: email,
+      );
+
+      Navigator.of(context).pop(); // Close loading
+
+      if (result is Success ) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Money sent successfully!"),
+            backgroundColor: Colors.green,
+          ),
+        );
+        emailController.clear();
+        amountController.clear();
+        ref.read(homeNotifierProvider.notifier).loadHomeData();
+      } else if (result is FailureResult) {
+        final error = (result as FailureResult).error as Failure;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(error.message),
+            backgroundColor: Colors.red,
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Transaction failed!"),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -41,86 +86,66 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              const SizedBox(height: 30),
+        child: Column(
+          children: [
+            const SizedBox(height: 30),
 
-              // Email Field
-              TextFormField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  labelText: "Recipient Email",
-                  prefixIcon: const Icon(Icons.email_outlined),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
+            // Email Field
+            TextField(
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                labelText: "Recipient Email",
+                prefixIcon: const Icon(Icons.email_outlined),
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            // Amount Field
+            TextField(
+              controller: amountController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: "Amount",
+                prefixIcon: const Icon(Icons.attach_money),
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 40),
+
+            // Send Button
+            SizedBox(
+              width: double.infinity,
+              height: 55,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF4A6CF7),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide.none,
                   ),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter email";
-                  }
-                  if (!value.contains("@")) {
-                    return "Enter valid email";
-                  }
-                  return null;
-                },
-              ),
-
-              const SizedBox(height: 20),
-
-              // Amount Field
-              TextFormField(
-                controller: amountController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: "Amount",
-                  prefixIcon: const Icon(Icons.attach_money),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter amount";
-                  }
-                  if (double.tryParse(value) == null) {
-                    return "Enter valid number";
-                  }
-                  return null;
-                },
-              ),
-
-              const SizedBox(height: 40),
-
-              // Send Button
-              SizedBox(
-                width: double.infinity,
-                height: 55,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF4A6CF7),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                  onPressed: _sendMoney,
-                  child: const Text(
-                    "Send",
-                    style: TextStyle(fontSize: 18),
-                  ),
+                onPressed: sendMoney,
+                child: const Text(
+                  "Send",
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

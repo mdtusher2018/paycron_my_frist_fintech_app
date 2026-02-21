@@ -24,6 +24,8 @@ dependencies:
   riverpod_annotation: ^2.3.5
   freezed_annotation: ^3.0.0
   json_annotation: 
+  intl: ^0.20.2
+  flutter_stripe: ^12.3.0
 
 
   

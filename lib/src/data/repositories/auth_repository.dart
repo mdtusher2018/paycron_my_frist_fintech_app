@@ -33,10 +33,8 @@ final class AuthRepository extends IAuthRepository {
     return asyncGuard(() async {
       final res = await api.post(ApiEndpoints.signup, {
         "email": email,
-        "password": password,
-        "name": "John Doe",
-        "phoneNumber": "+8801646456527",
-        "registerWith": "credentials",
+        "pin": password,
+     
       });
       return SignupResponse.fromJson(res);
     });
