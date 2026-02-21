@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:template/src/features/authentication/presentation/pages/email_verification_page.dart';
-import 'package:template/src/features/authentication/presentation/pages/signin_page.dart';
-import 'package:template/src/features/authentication/presentation/pages/signup_page.dart';
-import 'package:template/src/features/profile/presentation/page/profile_page.dart';
+import 'package:template/src/presentation/features/authentication/pages/email_verification_page.dart';
+import 'package:template/src/presentation/features/authentication/pages/signin_page.dart';
+import 'package:template/src/presentation/features/authentication/pages/signup_page.dart';
+import 'package:template/src/presentation/features/profile/page/profile_page.dart';
 import 'package:template/unorganized_files/all_page.dart';
 
 import '../../../unorganized_files/home_page.dart';
