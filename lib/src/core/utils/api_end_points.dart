@@ -5,8 +5,8 @@ class ApiEndpoints {
   static String mapResturant(String resturantName) =>
       "https://places.googleapis.com/v1/places:searchText?query=$resturantName&key=$mapKey";
 
-  static const String baseUrl = 'http://147.93.29.184:8020/api/v1/';
-  static const String baseImageUrl = 'http://147.93.29.184:8020';
+  static const String baseUrl = 'http://10.10.10.21:3000/api/v1/';
+  static const String baseImageUrl = 'http://10.10.10.21:3000';
 
   // static const String baseUrl = 'http://103.186.20.117:6136/api/v1/';
   // static const String baseImageUrl = 'http://103.186.20.117:6136';
@@ -16,13 +16,13 @@ class ApiEndpoints {
   //authentication
   static String signin = "auth/signin";
 
-  static String signup = "auth/sign-up";
+  static String signup = "auth/signup";
 
-  static String emailVerification = "auth/verify-email";
-  static String resendOTP = "auth/resend-otp";
-
-  static String forgetPassword = "auth/forgot-password";
-  static String verifyOTP = "auth/verify-otp";
+  static String emailVerification = "auth/email-verification";
+  static String getMyTransaction = "transactions/transactions";
+  static String transferMoney = "transactions/transfer";
+  static String createADeposite = "transactions/create-deposit";
+  static String getMyBalance = "balance/my-balance";
 
   static String userProfile = "users/user-details";
 }

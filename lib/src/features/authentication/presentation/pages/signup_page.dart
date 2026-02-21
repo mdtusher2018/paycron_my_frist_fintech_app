@@ -66,6 +66,14 @@ class SignupPage extends ConsumerWidget {
                   style: const TextStyle(color: Colors.red),
                 ),
               ),
+
+
+              SizedBox(height:8),
+InkWell(
+  onTap: (){
+    context.go(AppRoutes.signUp);
+  },
+  child: Text("Go to Signin"))
           ],
         ),
       ),

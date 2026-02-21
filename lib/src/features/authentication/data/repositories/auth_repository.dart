@@ -18,7 +18,7 @@ final class AuthRepository extends IAuthRepository {
     return asyncGuard(() async {
       final res = await api.post(ApiEndpoints.signin, {
         "email": email,
-        "password": password,
+        "pin": password,
       });
 
       return SigninResponse.fromJson(res);

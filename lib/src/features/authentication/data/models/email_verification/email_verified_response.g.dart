@@ -12,7 +12,7 @@ _EmailVerifiedResponse _$EmailVerifiedResponseFromJson(
   status: json['status'] as String,
   statusCode: (json['statusCode'] as num).toInt(),
   message: json['message'] as String,
-  data: EmailVerifiedData.fromJson(json['data'] as Map<String, dynamic>),
+  accessToken: json['accessToken'] as String,
   errors: json['errors'] as List<dynamic>? ?? const [],
 );
 
@@ -22,18 +22,6 @@ Map<String, dynamic> _$EmailVerifiedResponseToJson(
   'status': instance.status,
   'statusCode': instance.statusCode,
   'message': instance.message,
-  'data': instance.data,
+  'accessToken': instance.accessToken,
   'errors': instance.errors,
 };
-
-_EmailVerifiedData _$EmailVerifiedDataFromJson(Map<String, dynamic> json) =>
-    _EmailVerifiedData(
-      type: json['type'] as String? ?? 'user',
-      accessToken: json['accessToken'] as String,
-    );
-
-Map<String, dynamic> _$EmailVerifiedDataToJson(_EmailVerifiedData instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'accessToken': instance.accessToken,
-    };

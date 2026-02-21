@@ -11,7 +11,7 @@ import 'routes.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: AppRoutes.createPost,
+    initialLocation: AppRoutes.signIn,
 
     routes: [
       GoRoute(path: AppRoutes.splash, builder: (context, state) => Allpage()),
