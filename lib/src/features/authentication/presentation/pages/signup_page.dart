@@ -71,7 +71,7 @@ class SignupPage extends ConsumerWidget {
               SizedBox(height:8),
 InkWell(
   onTap: (){
-    context.go(AppRoutes.signUp);
+    context.go(AppRoutes.signIn);
   },
   child: Text("Go to Signin"))
           ],
