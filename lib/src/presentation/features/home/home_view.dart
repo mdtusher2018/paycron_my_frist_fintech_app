@@ -20,9 +20,10 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   void initState() {
     super.initState();
-ref.read(localStorageProvider).readKey(StorageKey.accessToken);
+    ref.read(localStorageProvider).readKey(StorageKey.accessToken);
     Future.microtask(
-        () => ref.read(homeNotifierProvider.notifier).loadHomeData());
+      () => ref.read(homeNotifierProvider.notifier).loadHomeData(),
+    );
   }
 
   @override
@@ -69,7 +70,6 @@ ref.read(localStorageProvider).readKey(StorageKey.accessToken);
       ),
       child: Column(
         children: [
-        
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 500),
             child: Text(
@@ -105,14 +105,32 @@ ref.read(localStorageProvider).readKey(StorageKey.accessToken);
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children:  [
+          children: [
             InkWell(
-              onTap: (){
-context.push(AppRoutes.sendMoney);
+              onTap: () {
+                context.push(AppRoutes.sendMoney);
               },
-              child: _ActionItem(icon: Icons.send, label: "Send")),
-            _ActionItem(icon: Icons.request_page, label: "Request"),
-            _ActionItem(icon: Icons.account_balance, label: "Bank"),
+              child: _ActionItem(icon: Icons.send, label: "Send"),
+            ),
+            InkWell(
+              onTap: () {
+                ScaffoldMessenger.of(ref.context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      "Navbar and others featured Comming soon....",
+                    ),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+              },
+              child: _ActionItem(icon: Icons.request_page, label: "Request"),
+            ),
+            InkWell(
+              onTap: () {
+                context.go(AppRoutes.signIn);
+              },
+              child: _ActionItem(icon: Icons.logout, label: "Logout"),
+            ),
           ],
         ),
       ),
@@ -135,9 +153,10 @@ context.push(AppRoutes.sendMoney);
               isCredit: tx.amount >= 0,
               title: "${tx.senderName} → ${tx.reciverName}",
               amount: tx.amount.abs().toStringAsFixed(2),
-              time: DateFormat('dd MMM yyyy, hh:mm a')
-                  .format(DateTime.parse(tx.transactionsTime)),
-                  status: tx.status,
+              time: DateFormat(
+                'dd MMM yyyy, hh:mm a',
+              ).format(DateTime.parse(tx.transactionsTime)),
+              status: tx.status,
             ),
           ),
           const SizedBox(height: 20),
@@ -205,7 +224,7 @@ class _TransactionItem extends StatelessWidget {
     required this.title,
     required this.amount,
     required this.time,
-    required this.status
+    required this.status,
   });
 
   @override
@@ -220,11 +239,7 @@ class _TransactionItem extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
         boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 6,
-            offset: Offset(0, 3),
-          ),
+          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 3)),
         ],
       ),
       child: Row(
@@ -239,27 +254,36 @@ class _TransactionItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w500)),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
                 const SizedBox(height: 4),
-                Text(time,
-                    style:
-                        const TextStyle(fontSize: 12, color: Colors.grey)),
+                Text(
+                  time,
+                  style: const TextStyle(fontSize: 12, color: Colors.grey),
+                ),
               ],
             ),
           ),
           Column(
             children: [
               Text(
-                "${status!="Pending"? isCredit ? '+' : '-':""}\$$amount",
+                "${status != "Pending"
+                    ? isCredit
+                          ? '+'
+                          : '-'
+                    : ""}\$$amount",
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: amountColor),
-
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: amountColor,
+                ),
               ),
-              Text(status)
+              Text(status),
             ],
           ),
         ],

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:template/src/config/router/app_router.dart';
 import 'src/core/di/dependency_injection.dart';
 import 'package:template/src/core/services/snackbar/snackbar_service.dart';
@@ -13,16 +14,16 @@ void main() async {
 
   LocalStorageService().init();
   FlutterError.onError = (FlutterErrorDetails details) {
-    // Log the error to console
     log(
       'Flutter Error: ${details.exception}',
       stackTrace: details.stack,
       name: 'FlutterError',
     );
-
-    // Optionally, show error via SnackBar
-    // You can access the SnackBarService later in the widget tree
   };
+
+  Stripe.publishableKey =
+      "pk_test_51RINl1PG9XHOcPc0EWzFHpb89UURpt1siYriwsWyU3EUfozu15bmm4M0x7t0KBDZ8FMTHGfo7xoD00SjmA5uK11A00htzh5FBi";
+  await Stripe.instance.applySettings();
   runApp(ProviderScope(child: MyApp()));
 }
 
@@ -34,7 +35,7 @@ class MyApp extends ConsumerWidget {
     final snackBarService = ref.read(snackBarServiceProvider);
     final router = ref.watch(appRouterProvider);
     return ScreenUtilInit(
-       designSize: const Size(360, 690),
+      designSize: const Size(360, 690),
       child: MaterialApp.router(
         scaffoldMessengerKey: (snackBarService as SnackBarService).messengerKey,
         title: 'Template App',

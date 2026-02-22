@@ -75,8 +75,8 @@ final _riveAnimationProvider =
 class SigninPage extends ConsumerWidget {
   SigninPage({super.key});
 
-  final emailCtrl = TextEditingController(text: "tusher@gmail.com");
-  final passCtrl = TextEditingController(text: "hello123");
+  final emailCtrl = TextEditingController(text: "jhon@gmail.com");
+  final passCtrl = TextEditingController(text: "123456");
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -155,7 +155,8 @@ class SigninPage extends ConsumerWidget {
                           .setHandsUp(false);
                     },
                   ),
-                  CommonTextfieldWithTitle("Password",
+                  CommonTextfieldWithTitle(
+                    "Password",
                     onChnage: (value) {
                       ref
                           .read(_riveAnimationProvider.notifier)
@@ -172,9 +173,7 @@ class SigninPage extends ConsumerWidget {
                           .setHandsUp(false);
                     },
 
-                     passCtrl,
-
-                   
+                    passCtrl,
                   ),
                   const SizedBox(height: 20),
 

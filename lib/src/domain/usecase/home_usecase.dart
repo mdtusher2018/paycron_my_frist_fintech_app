@@ -19,13 +19,14 @@ class HomeUsecase {
 
     final balanceModel = (result as Success).data as GetMyBalance;
     final GetBalanceEntity entity = GetBalanceEntity(
-     balance: balanceModel.balance
+      balance: balanceModel.balance,
     );
     return Success(entity);
   }
+
   Future<Result<List<TransactionEntity>, Failure>> transactionUsecase() async {
     final result = await repository.getMyTransactions();
-final resultOfUserId=await repository.getMyUserId();
+    final resultOfUserId = await repository.getMyUserId();
     if (result is FailureResult) {
       final error = (result as FailureResult).error as Failure;
       return FailureResult(error);
@@ -34,26 +35,33 @@ final resultOfUserId=await repository.getMyUserId();
       final error = (result as FailureResult).error as Failure;
       return FailureResult(error);
     }
-    
-final myUserId=(resultOfUserId as Success).data as String;
+
+    final myUserId = (resultOfUserId as Success).data as String;
     final transactionModel = (result as Success).data as TransactionResponse;
-   final transactionList = transactionModel.transactions
-  
-    .map((e) => TransactionEntity(
-          senderName: e.sender.email,
-          reciverName: e.receiver.email,
-          amount:(myUserId==e.sender.id && myUserId!=e.receiver.id)?(0- e.amount):e.amount,
-          status: e.status,
-          transactionsTime: e.timestamp.toString(),
-        ))
-    .toList();
+    final transactionList = transactionModel.transactions
+        .map(
+          (e) => TransactionEntity(
+            senderName: e.sender.email,
+            reciverName: e.receiver.email,
+            amount: (myUserId == e.sender.id && myUserId != e.receiver.id)
+                ? (0 - e.amount)
+                : e.amount,
+            status: e.status,
+            transactionsTime: e.timestamp.toString(),
+          ),
+        )
+        .toList();
     return Success(transactionList);
   }
 
-
-
-  Future<Result<String, Failure>> sendMoney({required num amount, required String reciverEmail}) async {
-    final result = await repository.sendMoney(amount: amount,email: reciverEmail);
+  Future<Result<String, Failure>> sendMoney({
+    required num amount,
+    required String reciverEmail,
+  }) async {
+    final result = await repository.sendMoney(
+      amount: amount,
+      email: reciverEmail,
+    );
 
     if (result is FailureResult) {
       final error = (result as FailureResult).error as Failure;
@@ -61,13 +69,29 @@ final myUserId=(resultOfUserId as Success).data as String;
     }
 
     final balanceModel = (result as Success).data as CreateTransactionResponse;
- 
+
     return Success(balanceModel.message);
   }
 
+  Future<Result<(String,String), Failure>> deposite({required num amount}) async {
+    final result = await repository.deposite(amount: amount);
 
-  Future<Result<String, Failure>> deposite({required num amount}) async {
-    final result = await repository.deposite(amount: amount );
+    if (result is FailureResult) {
+      final error = (result as FailureResult).error as Failure;
+      return FailureResult(error);
+    }
+
+    final paymentScreate = (result as Success).data as (String,String);
+
+    return Success(paymentScreate);
+  }
+
+  Future<Result<String, Failure>> handlePaymentSuccess(
+    String paymentIntent,
+  ) async {
+    final result = await repository.depositeSucess(
+      paymentIntent: paymentIntent,
+    );
 
     if (result is FailureResult) {
       final error = (result as FailureResult).error as Failure;
@@ -75,9 +99,7 @@ final myUserId=(resultOfUserId as Success).data as String;
     }
 
     final paymentScreate = (result as Success).data as String;
- 
+
     return Success(paymentScreate);
   }
-
-
 }

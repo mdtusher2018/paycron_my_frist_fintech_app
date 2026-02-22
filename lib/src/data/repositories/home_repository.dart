@@ -18,18 +18,37 @@ final class HomeRepository extends IHomeRepository {
   HomeRepository(this._apiService, this._localStorageService);
 
   @override
-  Future<Result<String, Failure>> deposite({
+  Future<Result<(String, String), Failure>> deposite({
     String curency = "BDT",
     required num amount,
   }) {
     return asyncGuard(() async {
-      final result = await _apiService.post(ApiEndpoints.createADeposite, {
-        "amount": amount,
-        "currency": curency,
-      }) as Map<String,dynamic>;
+      final result =
+          await _apiService.post(ApiEndpoints.createADeposite, {
+                "amount": amount,
+                "currency": curency,
+              })
+              as Map<String, dynamic>;
 
-      final clientSecret= result['clientSecret']as String;
-      return clientSecret;
+      final clientSecret = result['clientSecret'] as String;
+      final paymentIntentId = result['paymentIntentId'] as String;
+      return (clientSecret, paymentIntentId);
+    });
+  }
+
+  @override
+  Future<Result<String, Failure>> depositeSucess({
+    required String paymentIntent,
+  }) {
+    return asyncGuard(() async {
+      final result =
+          await _apiService.post(ApiEndpoints.depositeSucess, {
+                "payment_intent": paymentIntent,
+              })
+              as Map<String, dynamic>;
+
+      final message = result['message'] as String;
+      return message;
     });
   }
 

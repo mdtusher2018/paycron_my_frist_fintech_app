@@ -3,7 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:template/src/core/base/result.dart';
 import 'package:template/src/core/base/failure.dart';
 import 'package:template/src/core/di/dependency_injection.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:template/src/presentation/features/home/stripe_payment.dart';
+
+//Device nai...............
+//wait
 
 class AddMoneyPage extends ConsumerWidget {
   AddMoneyPage({super.key});
@@ -36,29 +39,25 @@ class AddMoneyPage extends ConsumerWidget {
 
     if (result is Success) {
       // paymentSecret could be used to open Stripe
-      final clientSecret = (result as Success).data as String;
+      final (clientSecret, paymentIntentId) =
+          (result as Success).data as (String, String);
 
-      try {
-        // Initialize Stripe Payment Sheet
-        await Stripe.instance.initPaymentSheet(
-          paymentSheetParameters: SetupPaymentSheetParameters(
-            paymentIntentClientSecret: clientSecret,
-            merchantDisplayName: "Your App Name",
-          ),
+      await startCardPayment(clientSecret: clientSecret);
+      final sucessMessage = await homeUsecase.handlePaymentSuccess(
+        paymentIntentId,
+      );
+      if (sucessMessage is FailureResult) {
+        final error = (sucessMessage as FailureResult).error as Failure;
+        ScaffoldMessenger.of(ref.context).showSnackBar(
+          SnackBar(content: Text(error.message), backgroundColor: Colors.red),
         );
-
-        // Present the payment sheet
-        await Stripe.instance.presentPaymentSheet();
-
-        ScaffoldMessenger.of(
-          ref.context,
-        ).showSnackBar(const SnackBar(content: Text("Payment successful!")));
-      } catch (e) {
-        ScaffoldMessenger.of(
-          ref.context,
-        ).showSnackBar(SnackBar(content: Text("Payment failed: $e")));
       }
-
+      ScaffoldMessenger.of(ref.context).showSnackBar(
+        SnackBar(
+          content: Text((sucessMessage as Success).data as String),
+          backgroundColor: Colors.green,
+        ),
+      );
       amountController.clear();
     } else if (result is FailureResult) {
       final error = (result as FailureResult).error as Failure;
