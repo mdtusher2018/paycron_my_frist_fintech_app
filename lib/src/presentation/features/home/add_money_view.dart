@@ -110,7 +110,7 @@ class AddMoneyPage extends ConsumerWidget {
             // Add Button
             SizedBox(
               width: double.infinity,
-              height: 55,
+
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF4A6CF7),

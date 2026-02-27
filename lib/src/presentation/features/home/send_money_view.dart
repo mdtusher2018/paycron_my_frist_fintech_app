@@ -49,7 +49,7 @@ class SendMoneyPage extends ConsumerWidget {
 
       Navigator.of(context).pop(); // Close loading
 
-      if (result is Success ) {
+      if (result is Success) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text("Money sent successfully!"),
@@ -62,10 +62,7 @@ class SendMoneyPage extends ConsumerWidget {
       } else if (result is FailureResult) {
         final error = (result as FailureResult).error as Failure;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(error.message),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text(error.message), backgroundColor: Colors.red),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -129,7 +126,7 @@ class SendMoneyPage extends ConsumerWidget {
             // Send Button
             SizedBox(
               width: double.infinity,
-              height: 55,
+
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF4A6CF7),
@@ -139,10 +136,7 @@ class SendMoneyPage extends ConsumerWidget {
                   ),
                 ),
                 onPressed: sendMoney,
-                child: const Text(
-                  "Send",
-                  style: TextStyle(fontSize: 18),
-                ),
+                child: const Text("Send", style: TextStyle(fontSize: 18)),
               ),
             ),
           ],
