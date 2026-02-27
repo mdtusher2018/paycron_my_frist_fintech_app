@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:template/src/config/router/app_router.dart';
+import 'package:template/src/presentation/router/app_router.dart';
 import 'src/core/di/dependency_injection.dart';
 import 'package:template/src/core/services/snackbar/snackbar_service.dart';
 import 'package:template/src/core/services/storage/local_storage_service.dart';

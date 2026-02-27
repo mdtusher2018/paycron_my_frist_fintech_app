@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:template/src/config/router/app_router.dart';
+import 'package:template/src/presentation/router/app_router.dart';
 import 'package:template/src/core/services/network/api_client.dart';
 import 'package:template/src/core/services/network/api_service.dart';
 import 'package:template/src/core/services/network/i_api_service.dart';

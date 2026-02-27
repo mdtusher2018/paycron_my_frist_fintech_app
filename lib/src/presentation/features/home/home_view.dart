@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:template/src/config/router/routes.dart';
+import 'package:template/src/presentation/router/routes.dart';
 import 'package:template/src/core/di/dependency_injection.dart';
 import 'package:template/src/core/services/storage/storage_key.dart';
 import 'package:template/src/domain/entites/home_entity.dart';

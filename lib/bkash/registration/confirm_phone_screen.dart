@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:template/src/config/router/routes.dart';
+import 'package:template/src/presentation/router/routes.dart';
 import 'package:template/src/presentation/shared/themes/colors.dart';
 import 'package:template/src/presentation/shared/widgets/common_button.dart';
 import 'package:template/src/presentation/shared/widgets/common_otp_text_field.dart';
