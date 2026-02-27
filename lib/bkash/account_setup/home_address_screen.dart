@@ -70,7 +70,7 @@ class HomeAddressScreen extends StatelessWidget {
               textalign: TextAlign.center,
 
               onTap: () {
-                context.push(AppRoutes.addPersonalInfoScreen);
+                context.pushNamed(AppRoutes.addPersonalInfoScreen);
               },
             ),
 

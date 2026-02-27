@@ -5,20 +5,20 @@ List<GoRoute> _registrationRoutes() {
     GoRoute(
       path: AppRoutes.createAccountIntroScreen,
       name: AppRoutes.createAccountIntroScreen,
-      builder: (context, state) => const CreateAccountIntroScreen(),
+      pageBuilder: (context, state) =>
+          MaterialPage(child: const CreateAccountIntroScreen()),
       routes: [
         GoRoute(
           path: AppRoutes.createAccountScreen,
           name: AppRoutes.createAccountScreen,
-          builder: (context, state) => const CreateAccountScreen(),
+          pageBuilder: (context, state) =>
+              MaterialPage(child: const CreateAccountScreen()),
           routes: [
             GoRoute(
               path: AppRoutes.confirmPhoneScreen,
               name: AppRoutes.confirmPhoneScreen,
-              pageBuilder: (context, state) => MaterialPage(
-                key: state.pageKey,
-                child: const ConfirmPhoneScreen(),
-              ),
+              pageBuilder: (context, state) =>
+                  MaterialPage(child: const ConfirmPhoneScreen()),
             ),
           ],
         ),

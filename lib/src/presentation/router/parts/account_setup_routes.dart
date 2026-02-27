@@ -5,22 +5,26 @@ List<GoRoute> _accountSetupRoutes() {
     GoRoute(
       path: AppRoutes.addEmailScreen,
       name: AppRoutes.addEmailScreen,
-      builder: (context, state) => const AddEmailScreen(),
+      pageBuilder: (context, state) =>
+          MaterialPage(child: const AddEmailScreen()),
       routes: [
         GoRoute(
           path: AppRoutes.homeAddressScreen,
           name: AppRoutes.homeAddressScreen,
-          builder: (context, state) => const HomeAddressScreen(),
+          pageBuilder: (context, state) =>
+              MaterialPage(child: const HomeAddressScreen()),
           routes: [
             GoRoute(
               path: AppRoutes.addPersonalInfoScreen,
               name: AppRoutes.addPersonalInfoScreen,
-              builder: (context, state) => const AddPersonalInfoScreen(),
+              pageBuilder: (context, state) =>
+                  MaterialPage(child: const AddPersonalInfoScreen()),
               routes: [
                 GoRoute(
                   path: AppRoutes.countryResidenceScreen,
                   name: AppRoutes.countryResidenceScreen,
-                  builder: (context, state) => const CountryResidenceScreen(),
+                  pageBuilder: (context, state) =>
+                      MaterialPage(child: const CountryResidenceScreen()),
                 ),
               ],
             ),

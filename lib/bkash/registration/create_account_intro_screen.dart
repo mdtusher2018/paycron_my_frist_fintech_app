@@ -48,7 +48,7 @@ class CreateAccountIntroScreen extends StatelessWidget {
                 "Sign up",
                 textalign: TextAlign.center,
                 onTap: () {
-                  context.push(AppRoutes.createAccountScreen);
+                  context.goNamed(AppRoutes.createAccountScreen);
                 },
               ),
 
@@ -58,7 +58,7 @@ class CreateAccountIntroScreen extends StatelessWidget {
                 "Log in",
                 textalign: TextAlign.center,
                 onTap: () {
-                  context.push(AppRoutes.signIn);
+                  context.pushNamed(AppRoutes.signIn);
                 },
                 color: Colors.transparent,
                 boarder: Border.all(color: AppColors.primary),

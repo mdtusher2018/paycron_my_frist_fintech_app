@@ -108,7 +108,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           children: [
             InkWell(
               onTap: () {
-                context.push(AppRoutes.sendMoney);
+                context.pushNamed(AppRoutes.sendMoney);
               },
               child: _ActionItem(icon: Icons.send, label: "Send"),
             ),
@@ -180,7 +180,7 @@ class _AddMoneyButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
       onPressed: () {
-        context.push(AppRoutes.addMoney);
+        context.pushNamed(AppRoutes.addMoney);
       },
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),

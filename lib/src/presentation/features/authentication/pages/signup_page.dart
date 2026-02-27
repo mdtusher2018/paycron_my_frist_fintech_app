@@ -18,7 +18,7 @@ class SignupPage extends ConsumerWidget {
     ref.listen<AsyncValue<SignupEntity?>>(signupNotifierProvider, (prev, next) {
       next.whenData((success) {
         if (success != null) {
-          context.push(AppRoutes.emailVerification);
+          context.pushNamed(AppRoutes.emailVerification);
         }
       });
     });
@@ -67,13 +67,13 @@ class SignupPage extends ConsumerWidget {
                 ),
               ),
 
-
-              SizedBox(height:8),
-InkWell(
-  onTap: (){
-    context.go(AppRoutes.signIn);
-  },
-  child: Text("Go to Signin"))
+            SizedBox(height: 8),
+            InkWell(
+              onTap: () {
+                context.go(AppRoutes.signIn);
+              },
+              child: Text("Go to Signin"),
+            ),
           ],
         ),
       ),

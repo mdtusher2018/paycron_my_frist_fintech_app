@@ -5,7 +5,8 @@ List<GoRoute> _onboardingRoutes() {
     GoRoute(
       path: AppRoutes.onboardingScreen,
       name: AppRoutes.onboardingScreen,
-      builder: (context, state) => const OnboardingScreen(),
+      pageBuilder: (context, state) =>
+          MaterialPage(child: const OnboardingScreen()),
     ),
   ];
 }

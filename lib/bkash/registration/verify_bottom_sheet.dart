@@ -41,7 +41,7 @@ void showVerifyBottomSheet(BuildContext context) {
               textalign: TextAlign.center,
 
               onTap: () {
-                context.push(AppRoutes.confirmPhoneScreen);
+                context.pushNamed(AppRoutes.confirmPhoneScreen);
               },
             ),
 

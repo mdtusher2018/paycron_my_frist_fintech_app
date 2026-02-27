@@ -115,7 +115,7 @@ class _AddPersonalInfoScreenState extends State<AddPersonalInfoScreen> {
             CommonButton(
               "Continue",
               onTap: () {
-                context.push(AppRoutes.countryResidenceScreen);
+                context.pushNamed(AppRoutes.countryResidenceScreen);
               },
             ),
 

@@ -3,13 +3,13 @@ class AppRoutes {
   static const String onboardingScreen = '/onboarding';
 
   // Registration Intro
-  static const String createAccountIntroScreen = '/createAccountIntro';
-  static const String createAccountScreen = 'createAccount';
-  static const String confirmPhoneScreen = 'confirmPhone';
+  static const String createAccountIntroScreen = '/create-account-intro';
+  static const String createAccountScreen = 'create-account';
+  static const String confirmPhoneScreen = 'confirm-phone';
 
   // Account Setup Flow
   static const String addEmailScreen = '/addEmail';
-  static const String homeAddressScreen = 'homeAddress';
+  static const String homeAddressScreen = '/homeAddress';
   static const String addPersonalInfoScreen = '/addPersonalInfo';
   static const String countryResidenceScreen = '/countryResidence';
 

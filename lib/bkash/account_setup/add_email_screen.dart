@@ -49,7 +49,7 @@ class AddEmailScreen extends StatelessWidget {
             CommonButton(
               "Continue",
               onTap: () {
-                context.push(AppRoutes.homeAddressScreen);
+                context.pushNamed(AppRoutes.homeAddressScreen);
               },
             ),
 
