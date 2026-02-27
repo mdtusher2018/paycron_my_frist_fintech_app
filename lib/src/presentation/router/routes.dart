@@ -13,6 +13,13 @@ class AppRoutes {
   static const String addPersonalInfoScreen = '/addPersonalInfo';
   static const String countryResidenceScreen = '/countryResidence';
 
+  // ================= ACCOUNT VERIFICATION =================
+  static const String accountSetupProgressScreen = '/accountSetupProgress';
+  static const String takeSelfieInstructionScreen = '/takeSelfieInstruction';
+  static const String selfieCameraScreen = '/selfieCamera';
+  static const String idVerificationProgressScreen = '/idVerificationProgress';
+  static const String scanIdScreen = '/scanId';
+
   static const String splash = '/';
   static const String signIn = '/signin';
   static const String signUp = '/signup';

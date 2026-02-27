@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:template/bkash/account_verification/AccountSetupProgressScreen.dart';
+import 'package:template/bkash/account_verification/IdVerificationProgressScreen.dart';
+import 'package:template/bkash/account_verification/ScanIdScreen.dart';
+import 'package:template/bkash/account_verification/SelfieCameraScreen.dart';
+import 'package:template/bkash/account_verification/TakeSelfieInstructionScreen.dart';
 import 'package:template/bkash/registration/confirm_phone_screen.dart';
 import 'package:template/bkash/registration/create_account_intro_screen.dart';
 import 'package:template/bkash/registration/create_account_screen.dart';
@@ -21,14 +26,16 @@ import 'routes.dart';
 part 'parts/onboarding_routes.dart';
 part 'parts/account_setup_routes.dart';
 part 'parts/registration_routes.dart';
+part 'parts/account_verification_routes.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: AppRoutes.onboardingScreen,
+    initialLocation: AppRoutes.accountSetupProgressScreen,
     routes: [
       ..._onboardingRoutes(),
       ..._registrationRoutes(),
       ..._accountSetupRoutes(),
+      ..._accountVerificationRoutes(),
     ],
   );
 });
@@ -38,61 +45,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 //     initialLocation: AppRoutes.onboardingScreen,
 
 //     routes: [
-//       /// ================= ONBOARDING =================
-//       GoRoute(
-//         path: AppRoutes.onboardingScreen,
-//         builder: (context, state) => const OnboardingScreen(),
-//       ),
-
-//       /// ================= REGISTRATION =================
-//       GoRoute(
-//         path: AppRoutes.createAccountIntroScreen,
-//         builder: (context, state) => const CreateAccountIntroScreen(),
-//         routes: [
-//           GoRoute(
-//             path: AppRoutes.createAccountScreen,
-//             builder: (context, state) => const CreateAccountScreen(),
-//             routes: [
-//               GoRoute(
-//                 path: AppRoutes.confirmPhoneScreen,
-//                 pageBuilder: (context, state) =>
-//                     MaterialPage(child: const ConfirmPhoneScreen()),
-//               ),
-//             ],
-//           ),
-//         ],
-//       ),
-
-//       /// ================= ACCOUNT SETUP =================
-//       GoRoute(
-//         path: AppRoutes.addEmailScreen,
-//         builder: (context, state) => const AddEmailScreen(),
-//         routes: [
-//           GoRoute(
-//             path: AppRoutes.homeAddressScreen,
-//             builder: (context, state) => const HomeAddressScreen(),
-//             routes: [
-//               GoRoute(
-//                 path: AppRoutes.addPersonalInfoScreen,
-//                 builder: (context, state) => const AddPersonalInfoScreen(),
-//                 routes: [
-//                   GoRoute(
-//                     path: AppRoutes.countryResidenceScreen,
-//                     builder: (context, state) => const CountryResidenceScreen(),
-//                   ),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ],
-//       ),
-
-//       ////========================
-//       //  End
-//       ////========================
-//       ///
-//       ///
-//       ///
 //       GoRoute(
 //         path: AppRoutes.signIn,
 //         builder: (context, state) => SigninPage(),
