@@ -14,12 +14,12 @@ import 'package:template/bkash/account_setup/add_email_screen.dart';
 import 'package:template/bkash/account_setup/add_personal_info_screen.dart';
 import 'package:template/bkash/account_setup/country_residence_screen.dart';
 import 'package:template/bkash/account_setup/home_address_screen.dart';
-// import 'package:template/src/presentation/features/authentication/pages/email_verification_page.dart';
-// import 'package:template/src/presentation/features/authentication/pages/signin_page.dart';
-// import 'package:template/src/presentation/features/authentication/pages/signup_page.dart';
-// import 'package:template/src/presentation/features/home/add_money_view.dart';
-// import 'package:template/src/presentation/features/home/home_view.dart';
-// import 'package:template/src/presentation/features/home/send_money_view.dart';
+import 'package:template/src/presentation/features/authentication/pages/email_verification_page.dart';
+import 'package:template/src/presentation/features/authentication/pages/signin_page.dart';
+import 'package:template/src/presentation/features/authentication/pages/signup_page.dart';
+import 'package:template/src/presentation/features/home/add_money_view.dart';
+import 'package:template/src/presentation/features/home/home_view.dart';
+import 'package:template/src/presentation/features/home/send_money_view.dart';
 // import 'package:template/src/presentation/features/profile/page/profile_page.dart';
 import 'routes.dart';
 
@@ -30,12 +30,45 @@ part 'parts/account_verification_routes.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: AppRoutes.accountSetupProgressScreen,
+    initialLocation: AppRoutes.onboardingScreen,
     routes: [
       ..._onboardingRoutes(),
       ..._registrationRoutes(),
       ..._accountSetupRoutes(),
       ..._accountVerificationRoutes(),
+
+      GoRoute(
+        path: AppRoutes.signIn,
+        builder: (context, state) => SigninPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.signUp,
+        builder: (context, state) => SignupPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.emailVerification,
+        builder: (context, state) => EmailVerificationPage(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.home,
+        name: AppRoutes.home,
+        builder: (context, state) => const HomePage(),
+      ),
+
+      // GoRoute(
+      //   path: AppRoutes.profile,
+      //   builder: (context, state) => const ProfilePage(),
+      // ),
+      GoRoute(
+        path: AppRoutes.sendMoney,
+        builder: (context, state) => const SendMoneyPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.addMoney,
+        name: AppRoutes.addMoney,
+        builder: (context, state) => AddMoneyPage(),
+      ),
     ],
   );
 });

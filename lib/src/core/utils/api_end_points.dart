@@ -5,11 +5,10 @@ class ApiEndpoints {
   static String mapResturant(String resturantName) =>
       "https://places.googleapis.com/v1/places:searchText?query=$resturantName&key=$mapKey";
 
-  static const String baseUrl = 'http://192.168.1.100:3000/';
+  // static const String baseUrl = 'http://192.168.1.100:3000/';
   static const String baseImageUrl = 'http://192.168.1.100:3000';
 
-  // static const String baseUrl = 'http://103.186.20.117:6136/api/v1/';
-  // static const String baseImageUrl = 'http://103.186.20.117:6136';
+  static const String baseUrl = 'http://10.10.10.21:3000/';
 
   static String refreshToken = "auth/refresh-token";
 
