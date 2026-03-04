@@ -5,8 +5,11 @@ class ApiEndpoints {
   static String mapResturant(String resturantName) =>
       "https://places.googleapis.com/v1/places:searchText?query=$resturantName&key=$mapKey";
 
-  static const String baseUrl = 'http://192.168.1.102:3000/';
-  static const String baseImageUrl = 'http://192.168.1.102:3000';
+  static const String baseUrl = 'https://paycron-my-frist-fintech-1.onrender.com/';
+  static const String baseImageUrl = 'https://paycron-my-frist-fintech-1.onrender.com';
+
+  // static const String baseUrl = 'http://192.168.1.102:3000/';
+  // static const String baseImageUrl = 'http://192.168.1.102:3000';
 
   // static const String baseUrl = 'http://10.10.10.21:3000/';
 
