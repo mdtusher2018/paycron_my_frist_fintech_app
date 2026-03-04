@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template/src/core/base/result.dart';
-import 'package:template/src/core/base/failure.dart';
-import 'package:template/src/core/di/dependency_injection.dart';
-import 'package:template/src/presentation/features/home/stripe_payment.dart';
+import 'package:paycron_app/src/core/base/result.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/di/dependency_injection.dart';
+import 'package:paycron_app/src/presentation/features/home/stripe_payment.dart';
 
 //Device nai...............
 //wait

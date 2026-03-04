@@ -1,6 +1,6 @@
-import 'package:template/src/core/base/failure.dart';
-import 'package:template/src/core/base/result.dart';
-import 'package:template/src/core/utils/logger.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/base/result.dart';
+import 'package:paycron_app/src/core/utils/logger.dart';
 
 abstract base class Repository<T> {
   // ignore: avoid_shadowing_type_parameters

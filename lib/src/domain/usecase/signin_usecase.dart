@@ -1,13 +1,13 @@
 // features/authentication/domain/usecases/login_usecase.dart
 
-import 'package:template/src/core/base/failure.dart';
-import 'package:template/src/core/base/result.dart';
-import 'package:template/src/core/services/storage/i_local_storage_service.dart';
-import 'package:template/src/core/services/storage/storage_key.dart';
-import 'package:template/src/core/utils/extension/validator_extension.dart';
-import 'package:template/src/data/models/sign_in/signin_response.dart';
-import 'package:template/src/domain/entites/signin_entity.dart';
-import 'package:template/src/domain/repositories/i_auth_repository.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/base/result.dart';
+import 'package:paycron_app/src/core/services/storage/i_local_storage_service.dart';
+import 'package:paycron_app/src/core/services/storage/storage_key.dart';
+import 'package:paycron_app/src/core/utils/extension/validator_extension.dart';
+import 'package:paycron_app/src/data/models/sign_in/signin_response.dart';
+import 'package:paycron_app/src/domain/entites/signin_entity.dart';
+import 'package:paycron_app/src/domain/repositories/i_auth_repository.dart';
 
 class SigninUseCase {
   final IAuthRepository authRepository;

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:template/src/core/utils/logger.dart';
+import 'package:paycron_app/src/core/utils/logger.dart';
 
 enum FailureType { timeout, unauthorized, network, unknown }
 

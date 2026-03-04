@@ -1,4 +1,4 @@
-import 'package:template/src/core/utils/api_end_points.dart';
+import 'package:paycron_app/src/core/utils/api_end_points.dart';
 
 String getFullImagePath(String imagePath) {
   if (imagePath.isEmpty) {

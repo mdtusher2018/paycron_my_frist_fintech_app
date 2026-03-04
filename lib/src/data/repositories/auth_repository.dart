@@ -1,12 +1,12 @@
-import 'package:template/src/core/base/failure.dart';
-import 'package:template/src/core/base/result.dart';
-import 'package:template/src/core/services/network/i_api_service.dart';
-import 'package:template/src/core/services/storage/i_local_storage_service.dart';
-import 'package:template/src/core/utils/api_end_points.dart';
-import 'package:template/src/data/models/email_verification/email_verified_response.dart';
-import 'package:template/src/data/models/sign_in/signin_response.dart';
-import 'package:template/src/data/models/sign_up/signup_response.dart';
-import 'package:template/src/domain/repositories/i_auth_repository.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/base/result.dart';
+import 'package:paycron_app/src/core/services/network/i_api_service.dart';
+import 'package:paycron_app/src/core/services/storage/i_local_storage_service.dart';
+import 'package:paycron_app/src/core/utils/api_end_points.dart';
+import 'package:paycron_app/src/data/models/email_verification/email_verified_response.dart';
+import 'package:paycron_app/src/data/models/sign_in/signin_response.dart';
+import 'package:paycron_app/src/data/models/sign_up/signup_response.dart';
+import 'package:paycron_app/src/domain/repositories/i_auth_repository.dart';
 
 final class AuthRepository extends IAuthRepository {
   final IApiService api;

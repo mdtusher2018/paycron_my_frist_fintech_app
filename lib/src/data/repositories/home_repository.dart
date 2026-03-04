@@ -1,16 +1,16 @@
 import 'dart:convert';
 
-import 'package:template/src/core/base/failure.dart';
-import 'package:template/src/core/base/result.dart';
-import 'package:template/src/core/services/network/i_api_service.dart';
-import 'package:template/src/core/services/storage/i_local_storage_service.dart';
-import 'package:template/src/core/services/storage/storage_key.dart';
-import 'package:template/src/core/utils/api_end_points.dart';
-import 'package:template/src/data/models/create_transaction/create_transaction_response.dart';
-import 'package:template/src/data/models/get_balance/get_my_balance_response.dart';
-import 'package:template/src/data/models/get_transaction/get_my_transaction_response.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/base/result.dart';
+import 'package:paycron_app/src/core/services/network/i_api_service.dart';
+import 'package:paycron_app/src/core/services/storage/i_local_storage_service.dart';
+import 'package:paycron_app/src/core/services/storage/storage_key.dart';
+import 'package:paycron_app/src/core/utils/api_end_points.dart';
+import 'package:paycron_app/src/data/models/create_transaction/create_transaction_response.dart';
+import 'package:paycron_app/src/data/models/get_balance/get_my_balance_response.dart';
+import 'package:paycron_app/src/data/models/get_transaction/get_my_transaction_response.dart';
 
-import 'package:template/src/domain/repositories/i_home_repositoty.dart';
+import 'package:paycron_app/src/domain/repositories/i_home_repositoty.dart';
 
 final class HomeRepository extends IHomeRepository {
   final IApiService _apiService;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:template/src/presentation/router/routes.dart';
+import 'package:paycron_app/src/presentation/router/routes.dart';
 import '../../../../core/di/dependency_injection.dart';
-import 'package:template/src/domain/entites/email_verified_entity.dart';
-import 'package:template/src/presentation/features/authentication/notifiers/email_verified_notifier.dart';
+import 'package:paycron_app/src/domain/entites/email_verified_entity.dart';
+import 'package:paycron_app/src/presentation/features/authentication/notifiers/email_verified_notifier.dart';
 
 class EmailVerificationPage extends ConsumerStatefulWidget {
   const EmailVerificationPage({super.key});

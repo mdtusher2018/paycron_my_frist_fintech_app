@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template/src/presentation/features/home/home_view.dart';
+import 'package:paycron_app/src/presentation/features/home/home_view.dart';
 
 
 class RootView extends StatefulWidget {

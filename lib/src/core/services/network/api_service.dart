@@ -1,7 +1,7 @@
 // lib/core/network/api_service.dart
 import 'dart:io';
-import 'package:template/src/core/services/network/api_client.dart';
-import 'package:template/src/core/services/network/i_api_service.dart';
+import 'package:paycron_app/src/core/services/network/api_client.dart';
+import 'package:paycron_app/src/core/services/network/i_api_service.dart';
 
 final class ApiService implements IApiService {
   final ApiClient _client;

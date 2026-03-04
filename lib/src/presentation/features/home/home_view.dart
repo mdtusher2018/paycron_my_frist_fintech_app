@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:template/src/presentation/router/routes.dart';
-import 'package:template/src/core/di/dependency_injection.dart';
-import 'package:template/src/core/services/storage/storage_key.dart';
-import 'package:template/src/domain/entites/home_entity.dart';
-import 'package:template/src/presentation/features/home/home_view_notifier.dart';
+import 'package:paycron_app/src/presentation/router/routes.dart';
+import 'package:paycron_app/src/core/di/dependency_injection.dart';
+import 'package:paycron_app/src/core/services/storage/storage_key.dart';
+import 'package:paycron_app/src/domain/entites/home_entity.dart';
+import 'package:paycron_app/src/presentation/features/home/home_view_notifier.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});

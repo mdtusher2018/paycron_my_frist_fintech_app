@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:template/src/presentation/shared/themes/colors.dart';
-import 'package:template/src/presentation/shared/widgets/common_text.dart';
+import 'package:paycron_app/src/presentation/shared/themes/colors.dart';
+import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 
 class IdVerificationProgressScreen extends StatelessWidget {
   const IdVerificationProgressScreen({super.key});

@@ -1,10 +1,10 @@
-import 'package:template/src/core/base/failure.dart';
-import 'package:template/src/core/base/result.dart';
-import 'package:template/src/data/models/create_transaction/create_transaction_response.dart';
-import 'package:template/src/data/models/get_balance/get_my_balance_response.dart';
-import 'package:template/src/data/models/get_transaction/get_my_transaction_response.dart';
-import 'package:template/src/domain/entites/home_entity.dart';
-import 'package:template/src/domain/repositories/i_home_repositoty.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/base/result.dart';
+import 'package:paycron_app/src/data/models/create_transaction/create_transaction_response.dart';
+import 'package:paycron_app/src/data/models/get_balance/get_my_balance_response.dart';
+import 'package:paycron_app/src/data/models/get_transaction/get_my_transaction_response.dart';
+import 'package:paycron_app/src/domain/entites/home_entity.dart';
+import 'package:paycron_app/src/domain/repositories/i_home_repositoty.dart';
 
 class HomeUsecase {
   final IHomeRepository repository;

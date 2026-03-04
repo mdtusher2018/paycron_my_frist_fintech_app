@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:template/src/presentation/shared/themes/colors.dart';
-import 'package:template/src/presentation/shared/widgets/common_text.dart';
+import 'package:paycron_app/src/presentation/shared/themes/colors.dart';
+import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 
 
 class CommonErrorMassage extends StatelessWidget {

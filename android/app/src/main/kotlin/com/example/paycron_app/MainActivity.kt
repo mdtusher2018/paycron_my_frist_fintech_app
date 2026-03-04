@@ -1,4 +1,4 @@
-package com.example.template
+package com.example.paycron_app
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragmentActivity

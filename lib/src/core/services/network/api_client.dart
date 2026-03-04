@@ -2,13 +2,13 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:template/src/core/utils/logger.dart';
-import 'package:template/src/core/services/network/error/api_exception.dart';
-import 'package:template/src/core/services/network/interceptor.dart/auth_interceptor.dart';
-import 'package:template/src/core/services/network/interceptor.dart/logger_interceptor.dart';
-import 'package:template/src/core/services/network/interceptor.dart/refresh_token_interceptor.dart';
-import 'package:template/src/core/services/network/interceptor.dart/retry_interceptor.dart';
-import 'package:template/src/core/services/storage/i_local_storage_service.dart';
+import 'package:paycron_app/src/core/utils/logger.dart';
+import 'package:paycron_app/src/core/services/network/error/api_exception.dart';
+import 'package:paycron_app/src/core/services/network/interceptor.dart/auth_interceptor.dart';
+import 'package:paycron_app/src/core/services/network/interceptor.dart/logger_interceptor.dart';
+import 'package:paycron_app/src/core/services/network/interceptor.dart/refresh_token_interceptor.dart';
+import 'package:paycron_app/src/core/services/network/interceptor.dart/retry_interceptor.dart';
+import 'package:paycron_app/src/core/services/storage/i_local_storage_service.dart';
 
 class ApiClient {
   final Dio dio;

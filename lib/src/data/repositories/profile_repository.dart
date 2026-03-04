@@ -1,10 +1,10 @@
-import 'package:template/src/core/base/failure.dart';
-import 'package:template/src/core/base/result.dart';
-import 'package:template/src/core/services/network/i_api_service.dart';
-import 'package:template/src/core/utils/api_end_points.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/base/result.dart';
+import 'package:paycron_app/src/core/services/network/i_api_service.dart';
+import 'package:paycron_app/src/core/utils/api_end_points.dart';
 
-import 'package:template/src/data/models/profile/profile_response.dart';
-import 'package:template/src/domain/repositories/i_profile_repositoty.dart';
+import 'package:paycron_app/src/data/models/profile/profile_response.dart';
+import 'package:paycron_app/src/domain/repositories/i_profile_repositoty.dart';
 
 final class ProfileRepository extends IProfileRepository {
   final IApiService _apiService;

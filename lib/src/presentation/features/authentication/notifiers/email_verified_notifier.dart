@@ -1,9 +1,9 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:template/src/core/base/failure.dart';
-import 'package:template/src/core/base/result.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/base/result.dart';
 import '../../../../core/di/dependency_injection.dart';
-import 'package:template/src/domain/entites/email_verified_entity.dart';
-import 'package:template/src/domain/usecase/email_verified_usecase.dart';
+import 'package:paycron_app/src/domain/entites/email_verified_entity.dart';
+import 'package:paycron_app/src/domain/usecase/email_verified_usecase.dart';
 part 'email_verified_notifier.g.dart';
 
 

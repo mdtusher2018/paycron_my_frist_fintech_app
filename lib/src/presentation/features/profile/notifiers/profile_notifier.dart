@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:template/src/core/base/failure.dart';
-import 'package:template/src/core/base/result.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/base/result.dart';
 import '../../../../core/di/dependency_injection.dart';
-import 'package:template/src/domain/entites/user_profile_entity.dart';
-import 'package:template/src/domain/usecase/profile_usecase.dart';
+import 'package:paycron_app/src/domain/entites/user_profile_entity.dart';
+import 'package:paycron_app/src/domain/usecase/profile_usecase.dart';
 
 part 'profile_notifier.g.dart';
 part 'profile_notifier.freezed.dart';

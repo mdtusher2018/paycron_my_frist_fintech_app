@@ -4,12 +4,12 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:template/src/presentation/router/routes.dart';
-import 'package:template/src/core/utils/logger.dart';
+import 'package:paycron_app/src/presentation/router/routes.dart';
+import 'package:paycron_app/src/core/utils/logger.dart';
 
-import 'package:template/src/core/services/storage/i_local_storage_service.dart';
-import 'package:template/src/core/services/storage/storage_key.dart';
-import 'package:template/src/core/utils/api_end_points.dart';
+import 'package:paycron_app/src/core/services/storage/i_local_storage_service.dart';
+import 'package:paycron_app/src/core/services/storage/storage_key.dart';
+import 'package:paycron_app/src/core/utils/api_end_points.dart';
 
 class RefreshTokenInterceptor extends Interceptor {
   final Dio dio;

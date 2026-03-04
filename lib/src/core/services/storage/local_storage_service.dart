@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:template/src/core/services/storage/i_local_storage_service.dart';
-import 'package:template/src/core/services/storage/storage_key.dart';
+import 'package:paycron_app/src/core/services/storage/i_local_storage_service.dart';
+import 'package:paycron_app/src/core/services/storage/storage_key.dart';
 
 final class LocalStorageService implements ILocalStorageService {
   static final LocalStorageService _instance = LocalStorageService._internal();

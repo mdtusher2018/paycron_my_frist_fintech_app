@@ -1,4 +1,4 @@
-import 'package:template/src/core/services/storage/storage_key.dart';
+import 'package:paycron_app/src/core/services/storage/storage_key.dart';
 
 abstract class ILocalStorageService {
   Future<void> saveKey(StorageKey key, dynamic value);

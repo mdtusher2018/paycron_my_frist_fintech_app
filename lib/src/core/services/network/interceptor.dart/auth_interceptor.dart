@@ -1,8 +1,8 @@
 // lib/core/network/interceptors/auth_interceptor.dart
 import 'package:dio/dio.dart';
-import 'package:template/src/core/utils/logger.dart';
-import 'package:template/src/core/services/storage/i_local_storage_service.dart';
-import 'package:template/src/core/services/storage/storage_key.dart';
+import 'package:paycron_app/src/core/utils/logger.dart';
+import 'package:paycron_app/src/core/services/storage/i_local_storage_service.dart';
+import 'package:paycron_app/src/core/services/storage/storage_key.dart';
 
 class AuthInterceptor extends Interceptor {
   final ILocalStorageService _localStorage;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/di/dependency_injection.dart';
-import 'package:template/src/presentation/features/profile/notifiers/profile_notifier.dart';
-import 'package:template/src/domain/entites/user_profile_entity.dart';
+import 'package:paycron_app/src/presentation/features/profile/notifiers/profile_notifier.dart';
+import 'package:paycron_app/src/domain/entites/user_profile_entity.dart';
 
 class ProfilePage extends ConsumerWidget {
   const ProfilePage({Key? key}) : super(key: key);

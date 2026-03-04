@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:template/src/core/services/network/i_api_service.dart';
-import 'package:template/src/core/services/snackbar/i_snackbar_service.dart';
-import 'package:template/src/core/utils/logger.dart';
+import 'package:paycron_app/src/core/services/network/i_api_service.dart';
+import 'package:paycron_app/src/core/services/snackbar/i_snackbar_service.dart';
+import 'package:paycron_app/src/core/utils/logger.dart';
 
 abstract class BaseAsyncNotifier<T> extends StateNotifier<AsyncValue<T?>> {
   final IApiService apiService;

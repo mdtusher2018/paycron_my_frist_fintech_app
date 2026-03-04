@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rive/rive.dart';
-import 'package:template/src/presentation/router/routes.dart';
-import 'package:template/src/domain/entites/signin_entity.dart';
-import 'package:template/src/presentation/features/authentication/notifiers/signin_notifier.dart';
-import 'package:template/src/presentation/shared/widgets/common_button.dart';
-import 'package:template/src/presentation/shared/widgets/common_text_field_with_title.dart';
+import 'package:paycron_app/src/presentation/router/routes.dart';
+import 'package:paycron_app/src/domain/entites/signin_entity.dart';
+import 'package:paycron_app/src/presentation/features/authentication/notifiers/signin_notifier.dart';
+import 'package:paycron_app/src/presentation/shared/widgets/common_button.dart';
+import 'package:paycron_app/src/presentation/shared/widgets/common_text_field_with_title.dart';
 
 // Define a class to hold both the Rive animation state and the controller
 class RiveState {
