@@ -1,8 +1,9 @@
+import 'package:paycron_app/src/domain/entites/auth_entity.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:paycron_app/src/core/base/failure.dart';
 import 'package:paycron_app/src/core/base/result.dart';
 import '../../../../core/di/dependency_injection.dart';
-import 'package:paycron_app/src/domain/entites/signup_entity.dart';
+
 import 'package:paycron_app/src/domain/usecase/signup_usecase.dart';
 part 'signup_notifier.g.dart';
 
@@ -19,14 +20,13 @@ class SignupNotifier extends _$SignupNotifier {
   Future<void> signup({
     required String email,
     required String password,
-    required String confirmPassword,
   }) async {
     state = const AsyncLoading();
 
     final result = await signupUseCase.execute(
       email: email,
       password: password,
-      confirmPassword: confirmPassword,
+
     );
 
     if (result is Success) {

@@ -5,33 +5,29 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:paycron_app/src/core/base/failure.dart';
 import 'package:paycron_app/src/core/base/result.dart';
 import '../../../../core/di/dependency_injection.dart';
-import 'package:paycron_app/src/domain/entites/user_profile_entity.dart';
-import 'package:paycron_app/src/domain/usecase/profile_usecase.dart';
+import 'package:paycron_app/src/domain/entites/profile_entity.dart';
+import 'package:paycron_app/src/domain/usecase/get_profile_usecase.dart';
 
 part 'profile_notifier.g.dart';
 part 'profile_notifier.freezed.dart';
 
-@riverpod
-ProfileUsecase profileUsecase(Ref ref) {
-  return ProfileUsecase(repository: ref.watch(profileRepositoryProvider));
-}
 
 @freezed
 abstract class ProfileState with _$ProfileState {
   const factory ProfileState.loading() = ProfileLoading;
-  const factory ProfileState.data(UserProfileEntity profile) = ProfileData;
+  const factory ProfileState.data(GetMyProfileEntity profile) = ProfileData;
   const factory ProfileState.error(
     Object error,
     StackTrace trace, {
-    UserProfileEntity? profile,
+    GetMyProfileEntity? profile,
   }) = ProfileError;
-  const factory ProfileState.refetching(UserProfileEntity profile) =
+  const factory ProfileState.refetching(GetMyProfileEntity profile) =
       ProfileRefetching;
 }
 
 @riverpod
 class ProfileNotifier extends _$ProfileNotifier {
-  late final ProfileUsecase usecase;
+  late final GetProfileUsecase usecase;
 
   @override
   ProfileState build() {
@@ -45,7 +41,7 @@ class ProfileNotifier extends _$ProfileNotifier {
     final result = await usecase.profileUseCase();
 
     if (result is Success) {
-      final data = (result as Success).data as UserProfileEntity;
+      final data = (result as Success).data as GetMyProfileEntity;
       state = ProfileState.data(data);
     } else if (result is FailureResult) {
       final Failure error = (result as FailureResult).error;
@@ -58,7 +54,7 @@ class ProfileNotifier extends _$ProfileNotifier {
 
   Future<void> refetch() async {
     final current = state;
-    UserProfileEntity? temp;
+    GetMyProfileEntity? temp;
 
     if (current is ProfileData) {
       temp = current.profile;
@@ -70,7 +66,7 @@ class ProfileNotifier extends _$ProfileNotifier {
     final result = await usecase.profileUseCase();
 
     if (result is Success) {
-      final data = (result as Success).data as UserProfileEntity;
+      final data = (result as Success).data as GetMyProfileEntity;
       state = ProfileState.data(data);
     } else if (result is FailureResult) {
       final Failure error = (result as FailureResult).error;

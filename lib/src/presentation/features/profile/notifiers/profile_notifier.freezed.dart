@@ -134,7 +134,7 @@ return refetching(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loading,TResult Function( UserProfileEntity profile)?  data,TResult Function( Object error,  StackTrace trace,  UserProfileEntity? profile)?  error,TResult Function( UserProfileEntity profile)?  refetching,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loading,TResult Function( GetMyProfileEntity profile)?  data,TResult Function( Object error,  StackTrace trace,  GetMyProfileEntity? profile)?  error,TResult Function( GetMyProfileEntity profile)?  refetching,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ProfileLoading() when loading != null:
 return loading();case ProfileData() when data != null:
@@ -158,7 +158,7 @@ return refetching(_that.profile);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loading,required TResult Function( UserProfileEntity profile)  data,required TResult Function( Object error,  StackTrace trace,  UserProfileEntity? profile)  error,required TResult Function( UserProfileEntity profile)  refetching,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loading,required TResult Function( GetMyProfileEntity profile)  data,required TResult Function( Object error,  StackTrace trace,  GetMyProfileEntity? profile)  error,required TResult Function( GetMyProfileEntity profile)  refetching,}) {final _that = this;
 switch (_that) {
 case ProfileLoading():
 return loading();case ProfileData():
@@ -181,7 +181,7 @@ return refetching(_that.profile);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loading,TResult? Function( UserProfileEntity profile)?  data,TResult? Function( Object error,  StackTrace trace,  UserProfileEntity? profile)?  error,TResult? Function( UserProfileEntity profile)?  refetching,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loading,TResult? Function( GetMyProfileEntity profile)?  data,TResult? Function( Object error,  StackTrace trace,  GetMyProfileEntity? profile)?  error,TResult? Function( GetMyProfileEntity profile)?  refetching,}) {final _that = this;
 switch (_that) {
 case ProfileLoading() when loading != null:
 return loading();case ProfileData() when data != null:
@@ -240,7 +240,7 @@ class ProfileData with DiagnosticableTreeMixin implements ProfileState {
   const ProfileData(this.profile);
   
 
- final  UserProfileEntity profile;
+ final  GetMyProfileEntity profile;
 
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
@@ -278,7 +278,7 @@ abstract mixin class $ProfileDataCopyWith<$Res> implements $ProfileStateCopyWith
   factory $ProfileDataCopyWith(ProfileData value, $Res Function(ProfileData) _then) = _$ProfileDataCopyWithImpl;
 @useResult
 $Res call({
- UserProfileEntity profile
+ GetMyProfileEntity profile
 });
 
 
@@ -298,7 +298,7 @@ class _$ProfileDataCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? profile = null,}) {
   return _then(ProfileData(
 null == profile ? _self.profile : profile // ignore: cast_nullable_to_non_nullable
-as UserProfileEntity,
+as GetMyProfileEntity,
   ));
 }
 
@@ -314,7 +314,7 @@ class ProfileError with DiagnosticableTreeMixin implements ProfileState {
 
  final  Object error;
  final  StackTrace trace;
- final  UserProfileEntity? profile;
+ final  GetMyProfileEntity? profile;
 
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
@@ -352,7 +352,7 @@ abstract mixin class $ProfileErrorCopyWith<$Res> implements $ProfileStateCopyWit
   factory $ProfileErrorCopyWith(ProfileError value, $Res Function(ProfileError) _then) = _$ProfileErrorCopyWithImpl;
 @useResult
 $Res call({
- Object error, StackTrace trace, UserProfileEntity? profile
+ Object error, StackTrace trace, GetMyProfileEntity? profile
 });
 
 
@@ -373,7 +373,7 @@ class _$ProfileErrorCopyWithImpl<$Res>
   return _then(ProfileError(
 null == error ? _self.error : error ,null == trace ? _self.trace : trace // ignore: cast_nullable_to_non_nullable
 as StackTrace,profile: freezed == profile ? _self.profile : profile // ignore: cast_nullable_to_non_nullable
-as UserProfileEntity?,
+as GetMyProfileEntity?,
   ));
 }
 
@@ -387,7 +387,7 @@ class ProfileRefetching with DiagnosticableTreeMixin implements ProfileState {
   const ProfileRefetching(this.profile);
   
 
- final  UserProfileEntity profile;
+ final  GetMyProfileEntity profile;
 
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
@@ -425,7 +425,7 @@ abstract mixin class $ProfileRefetchingCopyWith<$Res> implements $ProfileStateCo
   factory $ProfileRefetchingCopyWith(ProfileRefetching value, $Res Function(ProfileRefetching) _then) = _$ProfileRefetchingCopyWithImpl;
 @useResult
 $Res call({
- UserProfileEntity profile
+ GetMyProfileEntity profile
 });
 
 
@@ -445,7 +445,7 @@ class _$ProfileRefetchingCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? profile = null,}) {
   return _then(ProfileRefetching(
 null == profile ? _self.profile : profile // ignore: cast_nullable_to_non_nullable
-as UserProfileEntity,
+as GetMyProfileEntity,
   ));
 }
 

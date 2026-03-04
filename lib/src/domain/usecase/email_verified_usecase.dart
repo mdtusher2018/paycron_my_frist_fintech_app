@@ -5,7 +5,7 @@ import 'package:paycron_app/src/core/services/storage/storage_key.dart';
 import 'package:paycron_app/src/core/utils/extension/validator_extension.dart';
 import 'package:paycron_app/src/data/models/email_verification/email_verified_response.dart';
 
-import 'package:paycron_app/src/domain/entites/email_verified_entity.dart';
+import 'package:paycron_app/src/domain/entites/auth_entity.dart';
 import 'package:paycron_app/src/domain/repositories/i_auth_repository.dart';
 
 class EmailVerifiedUsecase {

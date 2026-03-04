@@ -9,7 +9,6 @@ part of 'email_verified_response.dart';
 _EmailVerifiedResponse _$EmailVerifiedResponseFromJson(
   Map<String, dynamic> json,
 ) => _EmailVerifiedResponse(
-  statusCode: (json['statusCode'] as num).toInt(),
   status: json['status'] as bool,
   message: json['message'] as String,
   accessToken: json['accessToken'] as String,
@@ -19,7 +18,6 @@ _EmailVerifiedResponse _$EmailVerifiedResponseFromJson(
 Map<String, dynamic> _$EmailVerifiedResponseToJson(
   _EmailVerifiedResponse instance,
 ) => <String, dynamic>{
-  'statusCode': instance.statusCode,
   'status': instance.status,
   'message': instance.message,
   'accessToken': instance.accessToken,

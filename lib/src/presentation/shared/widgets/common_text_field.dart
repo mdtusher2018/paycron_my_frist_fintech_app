@@ -18,6 +18,7 @@ class CommonTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final void Function(String)? onChanged;
   final bool readOnly;
+  final Widget? prefixIcon;
 
   const CommonTextField({
     super.key,
@@ -25,9 +26,10 @@ class CommonTextField extends StatelessWidget {
     this.hintText,
     this.minLine,
     this.enabled,
-    this.boarderColor = Colors.black,
+    this.prefixIcon,
+    this.boarderColor = Colors.black54,
     this.boarderWidth = 1.0,
-    this.keyboardType = TextInputType.number,
+    this.keyboardType = TextInputType.text,
     this.onChanged,
     this.readOnly = false,
   });
@@ -45,6 +47,7 @@ class CommonTextField extends StatelessWidget {
         enabled: enabled,
         style: TextStyle(fontSize: 14.sp),
         decoration: InputDecoration(
+          prefixIcon: prefixIcon,
           hintText: hintText,
           hintStyle: TextStyle(fontSize: 12.sp, color: AppColors.textSecondary),
           filled: true,

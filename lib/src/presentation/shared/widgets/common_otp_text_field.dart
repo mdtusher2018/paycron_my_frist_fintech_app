@@ -32,9 +32,10 @@ class CommonOTPTextField extends StatelessWidget {
         textAlign: TextAlign.center,
         cursorColor: Colors.black,
         style: TextStyle(fontSize: 20.sp),
+    
         maxLength: 1,
         decoration: InputDecoration(
-          counterText: '',
+          counterText: '',contentPadding: EdgeInsets.all(0),
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.transparent),
             borderRadius: BorderRadius.circular(8.r),

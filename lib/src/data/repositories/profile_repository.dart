@@ -2,6 +2,7 @@ import 'package:paycron_app/src/core/base/failure.dart';
 import 'package:paycron_app/src/core/base/result.dart';
 import 'package:paycron_app/src/core/services/network/i_api_service.dart';
 import 'package:paycron_app/src/core/utils/api_end_points.dart';
+import 'package:paycron_app/src/data/models/complete_profile_response/complete_profile_response.dart';
 
 import 'package:paycron_app/src/data/models/profile/profile_response.dart';
 import 'package:paycron_app/src/domain/repositories/i_profile_repositoty.dart';
@@ -14,6 +15,19 @@ final class ProfileRepository extends IProfileRepository {
     return asyncGuard(() async {
       final result = await _apiService.get(ApiEndpoints.userProfile);
       return ProfileResponse.fromJson(result);
+    });
+  }
+
+  @override
+  Future<Result<CompleteProfileResponse, Failure>> completeProfile(
+    Map<String, dynamic> profileData,
+  ) async {
+    return asyncGuard(() async {
+      final result = await _apiService.patch(
+        ApiEndpoints.completeProfile,
+        profileData,
+      );
+      return CompleteProfileResponse.fromJson(result);
     });
   }
 }

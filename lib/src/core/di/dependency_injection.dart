@@ -1,4 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:paycron_app/src/domain/usecase/complete_profile_usecase.dart';
+import 'package:paycron_app/src/domain/usecase/get_profile_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:paycron_app/src/presentation/router/app_router.dart';
 import 'package:paycron_app/src/core/services/network/api_client.dart';

@@ -8,9 +8,8 @@ class AppRoutes {
   static const String confirmPhoneScreen = 'confirm-phone';
 
   // Account Setup Flow
-  static const String addEmailScreen = '/addEmail';
-  static const String homeAddressScreen = '/homeAddress';
   static const String addPersonalInfoScreen = '/addPersonalInfo';
+  static const String homeAddressScreen = '/homeAddress';
   static const String countryResidenceScreen = '/countryResidence';
 
   // ================= ACCOUNT VERIFICATION =================
@@ -22,8 +21,6 @@ class AppRoutes {
 
   static const String splash = '/';
   static const String signIn = '/signin';
-  static const String signUp = '/signup';
-  static const String emailVerification = '/email-verification';
 
   static const String home = '/home';
   static const String sendMoney = '/send-money';

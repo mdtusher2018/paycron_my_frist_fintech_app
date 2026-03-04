@@ -6,7 +6,7 @@ import 'package:paycron_app/src/core/services/storage/i_local_storage_service.da
 import 'package:paycron_app/src/core/services/storage/storage_key.dart';
 import 'package:paycron_app/src/core/utils/extension/validator_extension.dart';
 import 'package:paycron_app/src/data/models/sign_in/signin_response.dart';
-import 'package:paycron_app/src/domain/entites/signin_entity.dart';
+import 'package:paycron_app/src/domain/entites/auth_entity.dart';
 import 'package:paycron_app/src/domain/repositories/i_auth_repository.dart';
 
 class SigninUseCase {

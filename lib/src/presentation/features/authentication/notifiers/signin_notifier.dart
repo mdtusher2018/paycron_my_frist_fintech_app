@@ -1,6 +1,8 @@
 // features/authentication/domain/notifiers/login_notifier.dart
+import 'package:paycron_app/src/domain/entites/auth_entity.dart';
+
 import '../../../../core/di/dependency_injection.dart';
-import 'package:paycron_app/src/domain/entites/signin_entity.dart';
+
 import 'package:paycron_app/src/domain/usecase/signin_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:paycron_app/src/core/base/result.dart';

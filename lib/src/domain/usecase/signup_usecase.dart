@@ -7,7 +7,7 @@ import 'package:paycron_app/src/core/services/storage/storage_key.dart';
 import 'package:paycron_app/src/core/utils/extension/validator_extension.dart';
 import 'package:paycron_app/src/data/models/sign_up/signup_response.dart';
 import 'package:paycron_app/src/domain/repositories/i_auth_repository.dart';
-import 'package:paycron_app/src/domain/entites/signup_entity.dart';
+import 'package:paycron_app/src/domain/entites/auth_entity.dart';
 
 class SignupUseCase {
   final IAuthRepository authRepository;
@@ -18,11 +18,11 @@ class SignupUseCase {
   Future<Result<SignupEntity, Failure>> execute({
     required String email,
     required String password,
-    required String confirmPassword,
+
   }) async {
     email = email.trim();
     password = password.trim();
-    confirmPassword = confirmPassword.trim();
+
 
     // 🔹 Validation
     if (email.isNullOrEmpty && password.isNullOrEmpty) {
@@ -67,14 +67,6 @@ class SignupUseCase {
       );
     }
 
-    if (confirmPassword != password) {
-      return FailureResult(
-        Failure(
-          type: FailureType.unknown,
-          message: "Password and confirm password do not match.",
-        ),
-      );
-    }
 
     // 🔹 Call repository (API)
     final response = await authRepository.signup(email, password);

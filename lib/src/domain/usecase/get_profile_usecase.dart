@@ -1,13 +1,13 @@
 import 'package:paycron_app/src/core/base/failure.dart';
 import 'package:paycron_app/src/core/base/result.dart';
 import 'package:paycron_app/src/data/models/profile/profile_response.dart';
-import 'package:paycron_app/src/domain/entites/user_profile_entity.dart';
+import 'package:paycron_app/src/domain/entites/profile_entity.dart';
 import 'package:paycron_app/src/domain/repositories/i_profile_repositoty.dart';
 
-class ProfileUsecase {
+class GetProfileUsecase {
   final IProfileRepository repository;
-  ProfileUsecase({required this.repository});
-  Future<Result<UserProfileEntity, Failure>> profileUseCase() async {
+  GetProfileUsecase({required this.repository});
+  Future<Result<GetMyProfileEntity, Failure>> profileUseCase() async {
     final result = await repository.getProfile();
 
     if (result is FailureResult) {
@@ -16,7 +16,7 @@ class ProfileUsecase {
     }
 
     final userModel = (result as Success).data as ProfileResponse;
-    final UserProfileEntity userEntity = UserProfileEntity(
+    final GetMyProfileEntity userEntity = GetMyProfileEntity(
       userName: userModel.data.attributes.first.fullName,
     );
     return Success(userEntity);

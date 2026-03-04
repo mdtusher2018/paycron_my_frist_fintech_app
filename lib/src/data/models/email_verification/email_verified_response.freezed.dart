@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$EmailVerifiedResponse {
 
- int get statusCode; bool get status; String get message; String get accessToken; String get refreshToken;
+ bool get status; String get message; String get accessToken; String get refreshToken;
 /// Create a copy of EmailVerifiedResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $EmailVerifiedResponseCopyWith<EmailVerifiedResponse> get copyWith => _$EmailVer
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmailVerifiedResponse&&(identical(other.statusCode, statusCode) || other.statusCode == statusCode)&&(identical(other.status, status) || other.status == status)&&(identical(other.message, message) || other.message == message)&&(identical(other.accessToken, accessToken) || other.accessToken == accessToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmailVerifiedResponse&&(identical(other.status, status) || other.status == status)&&(identical(other.message, message) || other.message == message)&&(identical(other.accessToken, accessToken) || other.accessToken == accessToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,statusCode,status,message,accessToken,refreshToken);
+int get hashCode => Object.hash(runtimeType,status,message,accessToken,refreshToken);
 
 @override
 String toString() {
-  return 'EmailVerifiedResponse(statusCode: $statusCode, status: $status, message: $message, accessToken: $accessToken, refreshToken: $refreshToken)';
+  return 'EmailVerifiedResponse(status: $status, message: $message, accessToken: $accessToken, refreshToken: $refreshToken)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $EmailVerifiedResponseCopyWith<$Res>  {
   factory $EmailVerifiedResponseCopyWith(EmailVerifiedResponse value, $Res Function(EmailVerifiedResponse) _then) = _$EmailVerifiedResponseCopyWithImpl;
 @useResult
 $Res call({
- int statusCode, bool status, String message, String accessToken, String refreshToken
+ bool status, String message, String accessToken, String refreshToken
 });
 
 
@@ -65,10 +65,9 @@ class _$EmailVerifiedResponseCopyWithImpl<$Res>
 
 /// Create a copy of EmailVerifiedResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? statusCode = null,Object? status = null,Object? message = null,Object? accessToken = null,Object? refreshToken = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? message = null,Object? accessToken = null,Object? refreshToken = null,}) {
   return _then(_self.copyWith(
-statusCode: null == statusCode ? _self.statusCode : statusCode // ignore: cast_nullable_to_non_nullable
-as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as bool,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,accessToken: null == accessToken ? _self.accessToken : accessToken // ignore: cast_nullable_to_non_nullable
 as String,refreshToken: null == refreshToken ? _self.refreshToken : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -157,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int statusCode,  bool status,  String message,  String accessToken,  String refreshToken)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool status,  String message,  String accessToken,  String refreshToken)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _EmailVerifiedResponse() when $default != null:
-return $default(_that.statusCode,_that.status,_that.message,_that.accessToken,_that.refreshToken);case _:
+return $default(_that.status,_that.message,_that.accessToken,_that.refreshToken);case _:
   return orElse();
 
 }
@@ -178,10 +177,10 @@ return $default(_that.statusCode,_that.status,_that.message,_that.accessToken,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int statusCode,  bool status,  String message,  String accessToken,  String refreshToken)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool status,  String message,  String accessToken,  String refreshToken)  $default,) {final _that = this;
 switch (_that) {
 case _EmailVerifiedResponse():
-return $default(_that.statusCode,_that.status,_that.message,_that.accessToken,_that.refreshToken);case _:
+return $default(_that.status,_that.message,_that.accessToken,_that.refreshToken);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +197,10 @@ return $default(_that.statusCode,_that.status,_that.message,_that.accessToken,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int statusCode,  bool status,  String message,  String accessToken,  String refreshToken)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool status,  String message,  String accessToken,  String refreshToken)?  $default,) {final _that = this;
 switch (_that) {
 case _EmailVerifiedResponse() when $default != null:
-return $default(_that.statusCode,_that.status,_that.message,_that.accessToken,_that.refreshToken);case _:
+return $default(_that.status,_that.message,_that.accessToken,_that.refreshToken);case _:
   return null;
 
 }
@@ -213,10 +212,9 @@ return $default(_that.statusCode,_that.status,_that.message,_that.accessToken,_t
 @JsonSerializable()
 
 class _EmailVerifiedResponse implements EmailVerifiedResponse {
-  const _EmailVerifiedResponse({required this.statusCode, required this.status, required this.message, required this.accessToken, required this.refreshToken});
+  const _EmailVerifiedResponse({required this.status, required this.message, required this.accessToken, required this.refreshToken});
   factory _EmailVerifiedResponse.fromJson(Map<String, dynamic> json) => _$EmailVerifiedResponseFromJson(json);
 
-@override final  int statusCode;
 @override final  bool status;
 @override final  String message;
 @override final  String accessToken;
@@ -235,16 +233,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmailVerifiedResponse&&(identical(other.statusCode, statusCode) || other.statusCode == statusCode)&&(identical(other.status, status) || other.status == status)&&(identical(other.message, message) || other.message == message)&&(identical(other.accessToken, accessToken) || other.accessToken == accessToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmailVerifiedResponse&&(identical(other.status, status) || other.status == status)&&(identical(other.message, message) || other.message == message)&&(identical(other.accessToken, accessToken) || other.accessToken == accessToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,statusCode,status,message,accessToken,refreshToken);
+int get hashCode => Object.hash(runtimeType,status,message,accessToken,refreshToken);
 
 @override
 String toString() {
-  return 'EmailVerifiedResponse(statusCode: $statusCode, status: $status, message: $message, accessToken: $accessToken, refreshToken: $refreshToken)';
+  return 'EmailVerifiedResponse(status: $status, message: $message, accessToken: $accessToken, refreshToken: $refreshToken)';
 }
 
 
@@ -255,7 +253,7 @@ abstract mixin class _$EmailVerifiedResponseCopyWith<$Res> implements $EmailVeri
   factory _$EmailVerifiedResponseCopyWith(_EmailVerifiedResponse value, $Res Function(_EmailVerifiedResponse) _then) = __$EmailVerifiedResponseCopyWithImpl;
 @override @useResult
 $Res call({
- int statusCode, bool status, String message, String accessToken, String refreshToken
+ bool status, String message, String accessToken, String refreshToken
 });
 
 
@@ -272,10 +270,9 @@ class __$EmailVerifiedResponseCopyWithImpl<$Res>
 
 /// Create a copy of EmailVerifiedResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? statusCode = null,Object? status = null,Object? message = null,Object? accessToken = null,Object? refreshToken = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? message = null,Object? accessToken = null,Object? refreshToken = null,}) {
   return _then(_EmailVerifiedResponse(
-statusCode: null == statusCode ? _self.statusCode : statusCode // ignore: cast_nullable_to_non_nullable
-as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as bool,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,accessToken: null == accessToken ? _self.accessToken : accessToken // ignore: cast_nullable_to_non_nullable
 as String,refreshToken: null == refreshToken ? _self.refreshToken : refreshToken // ignore: cast_nullable_to_non_nullable

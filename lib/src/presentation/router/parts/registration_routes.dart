@@ -12,13 +12,13 @@ List<GoRoute> _registrationRoutes() {
           path: AppRoutes.createAccountScreen,
           name: AppRoutes.createAccountScreen,
           pageBuilder: (context, state) =>
-              MaterialPage(child: const CreateAccountScreen()),
+              MaterialPage(child:  CreateAccountScreen()),
           routes: [
             GoRoute(
               path: AppRoutes.confirmPhoneScreen,
               name: AppRoutes.confirmPhoneScreen,
               pageBuilder: (context, state) =>
-                  MaterialPage(child: const ConfirmPhoneScreen()),
+                  MaterialPage(child:  ConfirmPhoneScreen()),
             ),
           ],
         ),

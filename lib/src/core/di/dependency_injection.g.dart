@@ -196,5 +196,42 @@ final homeUsecaseProvider = AutoDisposeProvider<HomeUsecase>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef HomeUsecaseRef = AutoDisposeProviderRef<HomeUsecase>;
+String _$profileUsecaseHash() => r'c456fe764fedcd078304d3301b06eb5a63056eb6';
+
+/// See also [profileUsecase].
+@ProviderFor(profileUsecase)
+final profileUsecaseProvider = AutoDisposeProvider<GetProfileUsecase>.internal(
+  profileUsecase,
+  name: r'profileUsecaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$profileUsecaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ProfileUsecaseRef = AutoDisposeProviderRef<GetProfileUsecase>;
+String _$completeProfileUsecaseHash() =>
+    r'03956ec73bedecee0de9c450bf1f3491d65324e0';
+
+/// See also [completeProfileUsecase].
+@ProviderFor(completeProfileUsecase)
+final completeProfileUsecaseProvider =
+    AutoDisposeProvider<CompleteProfileUsecase>.internal(
+      completeProfileUsecase,
+      name: r'completeProfileUsecaseProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$completeProfileUsecaseHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef CompleteProfileUsecaseRef =
+    AutoDisposeProviderRef<CompleteProfileUsecase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

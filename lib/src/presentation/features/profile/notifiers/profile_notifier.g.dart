@@ -6,24 +6,7 @@ part of 'profile_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileUsecaseHash() => r'cfd68daf86932721e8792b5d0cf0eb85d5f9f08e';
-
-/// See also [profileUsecase].
-@ProviderFor(profileUsecase)
-final profileUsecaseProvider = AutoDisposeProvider<ProfileUsecase>.internal(
-  profileUsecase,
-  name: r'profileUsecaseProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$profileUsecaseHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef ProfileUsecaseRef = AutoDisposeProviderRef<ProfileUsecase>;
-String _$profileNotifierHash() => r'd798a6d6313bf76f3887632f0513b6a324238498';
+String _$profileNotifierHash() => r'7001fb4a6fe1a76b060c6c90ce7b81b309f4bd8d';
 
 /// See also [ProfileNotifier].
 @ProviderFor(ProfileNotifier)

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/di/dependency_injection.dart';
 import 'package:paycron_app/src/presentation/features/profile/notifiers/profile_notifier.dart';
-import 'package:paycron_app/src/domain/entites/user_profile_entity.dart';
+import 'package:paycron_app/src/domain/entites/profile_entity.dart';
 
 class ProfilePage extends ConsumerWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -10,13 +10,13 @@ class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profileState = ref.watch(profileNotifierProvider);
-    ref.listen<ProfileState>(profileNotifierProvider, (previous, next) {
-      if (next is ProfileError && next.profile != null) {
-        ref
-            .read(snackBarServiceProvider)
-            .showError(next.error.toString(), context: context);
-      }
-    });
+  ref.listen<ProfileState>(profileNotifierProvider, (previous, next) {
+    if (next is ProfileError && next.profile != null) {
+      ref
+          .read(snackBarServiceProvider)
+          .showError(next.error.toString(), context: context);
+    }
+  });
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile Page'),
@@ -57,7 +57,7 @@ class ProfilePage extends ConsumerWidget {
     );
   }
 
-  Widget _buildProfile(UserProfileEntity profile, WidgetRef ref) {
+  Widget _buildProfile(GetMyProfileEntity profile, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: RefreshIndicator(
