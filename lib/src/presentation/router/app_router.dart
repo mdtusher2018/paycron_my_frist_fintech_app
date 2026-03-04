@@ -46,12 +46,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const HomePage(),
       ),
 
-      // GoRoute(
-      //   path: AppRoutes.profile,
-      //   builder: (context, state) => const ProfilePage(),
-      // ),
+
       GoRoute(
         path: AppRoutes.sendMoney,
+        name: AppRoutes.sendMoney,
         builder: (context, state) => const SendMoneyPage(),
       ),
       GoRoute(
