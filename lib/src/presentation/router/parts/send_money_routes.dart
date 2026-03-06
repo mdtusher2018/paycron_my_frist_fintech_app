@@ -26,6 +26,12 @@ List<GoRoute> _sendMoneyRoutes() {
                   const MaterialPage(child: EnterAmountPage()),
               routes: [
                 GoRoute(
+                  path: AppRoutes.enterPinScreen,
+                  name: AppRoutes.enterPinScreen,
+                  pageBuilder: (context, state) =>
+                      const MaterialPage(child: EnterPinPage()),
+                ),
+                GoRoute(
                   path: AppRoutes.transactionCompletePage,
                   name: AppRoutes.transactionCompletePage,
                   pageBuilder: (context, state) =>

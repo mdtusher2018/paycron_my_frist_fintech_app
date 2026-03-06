@@ -6,11 +6,12 @@ import 'package:paycron_app/bkash/account_verification/IdVerificationProgressScr
 import 'package:paycron_app/bkash/account_verification/ScanIdScreen.dart';
 import 'package:paycron_app/bkash/account_verification/SelfieCameraScreen.dart';
 import 'package:paycron_app/bkash/account_verification/TakeSelfieInstructionScreen.dart';
-import 'package:paycron_app/bkash/send/ChooseRecipientPage.dart';
-import 'package:paycron_app/bkash/send/EnterAmountPage.dart';
-import 'package:paycron_app/bkash/send/ScanQrPage.dart';
-import 'package:paycron_app/bkash/send/SelectPurposePage.dart';
-import 'package:paycron_app/bkash/send/TransactionCompletePage.dart';
+import 'package:paycron_app/bkash/send/choose_recipient_page.dart';
+import 'package:paycron_app/bkash/send/enter_pin_page.dart';
+import 'package:paycron_app/bkash/send/enter_amount_page.dart';
+import 'package:paycron_app/bkash/send/scan_qr_page.dart';
+import 'package:paycron_app/bkash/send/select_purpose_page.dart';
+import 'package:paycron_app/bkash/send/transaction_complete_page.dart';
 import 'package:paycron_app/src/presentation/features/authentication/pages/registration/confirm_phone_screen.dart';
 import 'package:paycron_app/bkash/on_boarding/create_account_intro_screen.dart';
 import 'package:paycron_app/src/presentation/features/authentication/pages/registration/create_account_screen.dart';

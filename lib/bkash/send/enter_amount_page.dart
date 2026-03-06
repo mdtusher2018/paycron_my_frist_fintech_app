@@ -134,7 +134,7 @@ class _EnterAmountPageState extends State<EnterAmountPage> {
               "Continue",
               textalign: TextAlign.center,
               onTap: () {
-                context.goNamed(AppRoutes.transactionCompletePage);
+                context.goNamed(AppRoutes.enterPinScreen);
               },
             ),
 

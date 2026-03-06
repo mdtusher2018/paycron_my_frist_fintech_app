@@ -23,6 +23,7 @@ class AppRoutes {
   static const String chooseRecipientScreen = '/choose-recipient';
   static const String selectPurposeScreen = 'select-purpose';
   static const String enterAmountScreen = 'enter-amount';
+  static const String enterPinScreen = 'enter-pin-page';
   static const String transactionCompletePage = 'transaction-complete-page';
   static const String scanQrPayScreen = 'scan-qr-pay';
 
