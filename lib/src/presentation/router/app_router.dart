@@ -6,6 +6,11 @@ import 'package:paycron_app/bkash/account_verification/IdVerificationProgressScr
 import 'package:paycron_app/bkash/account_verification/ScanIdScreen.dart';
 import 'package:paycron_app/bkash/account_verification/SelfieCameraScreen.dart';
 import 'package:paycron_app/bkash/account_verification/TakeSelfieInstructionScreen.dart';
+import 'package:paycron_app/bkash/send/ChooseRecipientPage.dart';
+import 'package:paycron_app/bkash/send/EnterAmountPage.dart';
+import 'package:paycron_app/bkash/send/ScanQrPage.dart';
+import 'package:paycron_app/bkash/send/SelectPurposePage.dart';
+import 'package:paycron_app/bkash/send/TransactionCompletePage.dart';
 import 'package:paycron_app/src/presentation/features/authentication/pages/registration/confirm_phone_screen.dart';
 import 'package:paycron_app/bkash/on_boarding/create_account_intro_screen.dart';
 import 'package:paycron_app/src/presentation/features/authentication/pages/registration/create_account_screen.dart';
@@ -23,29 +28,29 @@ part 'parts/onboarding_routes.dart';
 part 'parts/account_setup_routes.dart';
 part 'parts/registration_routes.dart';
 part 'parts/account_verification_routes.dart';
+part 'parts/send_money_routes.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: AppRoutes.onboardingScreen,
+    initialLocation: AppRoutes.chooseRecipientScreen,
     routes: [
       ..._onboardingRoutes(),
       ..._registrationRoutes(),
       ..._accountSetupRoutes(),
       ..._accountVerificationRoutes(),
+      ..._sendMoneyRoutes(),
 
       GoRoute(
         path: AppRoutes.signIn,
         name: AppRoutes.signIn,
         builder: (context, state) => SigninPage(),
       ),
-    
-   
+
       GoRoute(
         path: AppRoutes.home,
         name: AppRoutes.home,
         builder: (context, state) => const HomePage(),
       ),
-
 
       GoRoute(
         path: AppRoutes.sendMoney,

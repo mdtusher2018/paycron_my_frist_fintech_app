@@ -33,7 +33,7 @@ class _SelfieCameraScreenState extends State<SelfieCameraScreen> {
       setState(() {});
     }
   }
-
+ 
   @override
   void dispose() {
     _cameraController.dispose();

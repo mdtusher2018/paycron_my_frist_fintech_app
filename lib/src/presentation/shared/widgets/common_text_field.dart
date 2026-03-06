@@ -1,12 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:paycron_app/src/presentation/shared/themes/colors.dart';
-
-
-
-
-
 
 class CommonTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -18,6 +12,7 @@ class CommonTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final void Function(String)? onChanged;
   final bool readOnly;
+  final double boarderRadious;
   final Widget? prefixIcon;
 
   const CommonTextField({
@@ -29,6 +24,7 @@ class CommonTextField extends StatelessWidget {
     this.prefixIcon,
     this.boarderColor = Colors.black54,
     this.boarderWidth = 1.0,
+    this.boarderRadious = 12,
     this.keyboardType = TextInputType.text,
     this.onChanged,
     this.readOnly = false,
@@ -53,15 +49,15 @@ class CommonTextField extends StatelessWidget {
           filled: true,
           fillColor: Colors.white,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.r),
+            borderRadius: BorderRadius.circular(boarderRadious.r),
             borderSide: BorderSide(color: boarderColor, width: boarderWidth),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.r),
+            borderRadius: BorderRadius.circular(boarderRadious.r),
             borderSide: BorderSide(color: boarderColor, width: boarderWidth),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.r),
+            borderRadius: BorderRadius.circular(boarderRadious.r),
             borderSide: BorderSide(color: boarderColor, width: boarderWidth),
           ),
         ),
