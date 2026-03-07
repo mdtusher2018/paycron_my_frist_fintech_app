@@ -6,12 +6,18 @@ import 'package:paycron_app/bkash/account_verification/IdVerificationProgressScr
 import 'package:paycron_app/bkash/account_verification/ScanIdScreen.dart';
 import 'package:paycron_app/bkash/account_verification/SelfieCameraScreen.dart';
 import 'package:paycron_app/bkash/account_verification/TakeSelfieInstructionScreen.dart';
+import 'package:paycron_app/bkash/request/receive_request_success_page.dart';
+import 'package:paycron_app/bkash/request/choose_sender_page.dart';
+import 'package:paycron_app/bkash/request/enter_amount_page.dart';
+import 'package:paycron_app/bkash/request/enter_pin_page.dart';
+import 'package:paycron_app/bkash/request/scan_qr_for_request_money_page.dart';
+import 'package:paycron_app/bkash/request/select_purpose_page.dart';
 import 'package:paycron_app/bkash/send/choose_recipient_page.dart';
-import 'package:paycron_app/bkash/send/enter_pin_page.dart';
-import 'package:paycron_app/bkash/send/enter_amount_page.dart';
-import 'package:paycron_app/bkash/send/scan_qr_page.dart';
-import 'package:paycron_app/bkash/send/select_purpose_page.dart';
-import 'package:paycron_app/bkash/send/transaction_complete_page.dart';
+import 'package:paycron_app/bkash/send/enter_pin_for_send_money_page.dart';
+import 'package:paycron_app/bkash/send/enter_amount_for_send_money_page.dart';
+import 'package:paycron_app/bkash/send/scan_qr_for_send_money_page.dart';
+import 'package:paycron_app/bkash/send/select_purpose_for_send_money_page.dart';
+import 'package:paycron_app/bkash/send/send_transaction_complete_page.dart';
 import 'package:paycron_app/src/presentation/features/authentication/pages/registration/confirm_phone_screen.dart';
 import 'package:paycron_app/bkash/on_boarding/create_account_intro_screen.dart';
 import 'package:paycron_app/src/presentation/features/authentication/pages/registration/create_account_screen.dart';
@@ -30,16 +36,18 @@ part 'parts/account_setup_routes.dart';
 part 'parts/registration_routes.dart';
 part 'parts/account_verification_routes.dart';
 part 'parts/send_money_routes.dart';
+part 'parts/receive_money_routes.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: AppRoutes.chooseRecipientScreen,
+    initialLocation: AppRoutes.receiveChooseRecipient,
     routes: [
       ..._onboardingRoutes(),
       ..._registrationRoutes(),
       ..._accountSetupRoutes(),
       ..._accountVerificationRoutes(),
       ..._sendMoneyRoutes(),
+      ..._receiveMoneyRoutes(),
 
       GoRoute(
         path: AppRoutes.signIn,

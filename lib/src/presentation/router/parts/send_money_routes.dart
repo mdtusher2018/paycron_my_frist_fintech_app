@@ -3,39 +3,40 @@ part of '../app_router.dart';
 List<GoRoute> _sendMoneyRoutes() {
   return [
     GoRoute(
-      path: AppRoutes.scanQrPayScreen,
-      name: AppRoutes.scanQrPayScreen,
-      pageBuilder: (context, state) => const MaterialPage(child: ScanQrPage()),
+      path: AppRoutes.sendScanQr,
+      name: AppRoutes.sendScanQr,
+      pageBuilder: (context, state) =>
+          const MaterialPage(child: ScanQrForSendPage()),
     ),
     GoRoute(
-      path: AppRoutes.chooseRecipientScreen,
-      name: AppRoutes.chooseRecipientScreen,
+      path: AppRoutes.sendChooseRecipient,
+      name: AppRoutes.sendChooseRecipient,
       pageBuilder: (context, state) =>
           const MaterialPage(child: ChooseRecipientPage()),
       routes: [
         GoRoute(
-          path: AppRoutes.selectPurposeScreen,
-          name: AppRoutes.selectPurposeScreen,
+          path: AppRoutes.sendSelectPurpose,
+          name: AppRoutes.sendSelectPurpose,
           pageBuilder: (context, state) =>
-              const MaterialPage(child: SelectPurposePage()),
+              const MaterialPage(child: SelectPurposeForSendMoneyPage()),
           routes: [
             GoRoute(
-              path: AppRoutes.enterAmountScreen,
-              name: AppRoutes.enterAmountScreen,
+              path: AppRoutes.sendEnterAmount,
+              name: AppRoutes.sendEnterAmount,
               pageBuilder: (context, state) =>
-                  const MaterialPage(child: EnterAmountPage()),
+                  const MaterialPage(child: EnterAmountForSendMoneyPage()),
               routes: [
                 GoRoute(
-                  path: AppRoutes.enterPinScreen,
-                  name: AppRoutes.enterPinScreen,
+                  path: AppRoutes.sendEnterPin,
+                  name: AppRoutes.sendEnterPin,
                   pageBuilder: (context, state) =>
-                      const MaterialPage(child: EnterPinPage()),
+                      const MaterialPage(child: EnterPinForSendMoneyPage()),
                 ),
                 GoRoute(
-                  path: AppRoutes.transactionCompletePage,
-                  name: AppRoutes.transactionCompletePage,
+                  path: AppRoutes.sendComplete,
+                  name: AppRoutes.sendComplete,
                   pageBuilder: (context, state) =>
-                      const MaterialPage(child: TransactionCompletePage()),
+                      const MaterialPage(child: SendTransactionCompletePage()),
                 ),
               ],
             ),

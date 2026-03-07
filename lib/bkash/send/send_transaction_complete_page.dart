@@ -5,8 +5,8 @@ import 'package:paycron_app/src/presentation/router/routes.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_button.dart';
 
-class TransactionCompletePage extends StatelessWidget {
-  const TransactionCompletePage({super.key});
+class SendTransactionCompletePage extends StatelessWidget {
+  const SendTransactionCompletePage({super.key});
 
   Widget successIcon() {
     return Container(

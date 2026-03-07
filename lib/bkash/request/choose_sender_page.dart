@@ -6,10 +6,10 @@ import 'package:paycron_app/src/presentation/shared/widgets/common_button.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text_field.dart';
 
-class ChooseRecipientPage extends StatelessWidget {
-  const ChooseRecipientPage({super.key});
+class ChooseSenderPage extends StatelessWidget {
+  const ChooseSenderPage({super.key});
 
-  Widget recipientItem(BuildContext context) {
+  Widget senderItem(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8.h),
       padding: EdgeInsets.all(12.w),
@@ -30,6 +30,7 @@ class ChooseRecipientPage extends StatelessWidget {
             radius: 22.r,
             backgroundImage: const AssetImage("assets/user.jpg"),
           ),
+
           SizedBox(width: 12.w),
 
           Expanded(
@@ -41,7 +42,9 @@ class ChooseRecipientPage extends StatelessWidget {
                   size: 14,
                   fontWeight: FontWeight.w600,
                 ),
+
                 SizedBox(height: 2.h),
+
                 CommonText(
                   "hello@yourmail@gmail.com",
                   size: 12,
@@ -54,13 +57,13 @@ class ChooseRecipientPage extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
             decoration: BoxDecoration(
-              color: Colors.red.withOpacity(.1),
+              color: Colors.green.withOpacity(.1),
               borderRadius: BorderRadius.circular(20.r),
             ),
             child: const CommonText(
-              "-\$100",
+              "+\$100",
               size: 12,
-              color: Colors.red,
+              color: Colors.green,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -75,8 +78,8 @@ class ChooseRecipientPage extends StatelessWidget {
         color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(30.r),
       ),
-      child: CommonTextField(
-        hintText: "Search recipient email",
+      child: const CommonTextField(
+        hintText: "Search sender email",
         boarderRadious: 50,
         prefixIcon: Icon(Icons.search),
       ),
@@ -92,7 +95,7 @@ class ChooseRecipientPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CommonText(
-              "Choose Recipient",
+              "Choose Sender",
               size: 22,
               fontWeight: FontWeight.w700,
             ),
@@ -100,7 +103,7 @@ class ChooseRecipientPage extends StatelessWidget {
             SizedBox(height: 6.h),
 
             CommonText(
-              "Select who you want to send money to.",
+              "Select who will send you money.",
               size: 13,
               color: Colors.grey.shade600,
             ),
@@ -111,7 +114,9 @@ class ChooseRecipientPage extends StatelessWidget {
             searchField(),
 
             SizedBox(height: 10.h),
-            CommonButton("Send"),
+
+            CommonButton("Receive"),
+
             SizedBox(height: 10.h),
 
             /// Section Title
@@ -123,18 +128,18 @@ class ChooseRecipientPage extends StatelessWidget {
 
             SizedBox(height: 10.h),
 
-            /// Recipients
+            /// Sender list
             Expanded(
               child: ListView.builder(
-                padding: EdgeInsets.all(0),
+                padding: EdgeInsets.zero,
                 itemCount: 6,
                 itemBuilder: (context, index) {
                   return InkWell(
                     borderRadius: BorderRadius.circular(14.r),
                     onTap: () {
-                      context.goNamed(AppRoutes.sendSelectPurpose);
+                      context.goNamed(AppRoutes.receiveSelectPurpose);
                     },
-                    child: recipientItem(context),
+                    child: senderItem(context),
                   );
                 },
               ),

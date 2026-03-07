@@ -114,6 +114,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
             InkWell(
               onTap: () {
+                context.go(AppRoutes.receiveChooseRecipient);
                 ScaffoldMessenger.of(ref.context).showSnackBar(
                   SnackBar(
                     content: Text(

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 
-class ScanQrPage extends StatelessWidget {
-  const ScanQrPage({super.key});
+class ScanQrForRequestMoneyPage extends StatelessWidget {
+  const ScanQrForRequestMoneyPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,14 +6,16 @@ import 'package:paycron_app/src/presentation/shared/themes/colors.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_button.dart';
 
-class SelectPurposePage extends StatefulWidget {
-  const SelectPurposePage({super.key});
+class SelectPurposeForSendMoneyPage extends StatefulWidget {
+  const SelectPurposeForSendMoneyPage({super.key});
 
   @override
-  State<SelectPurposePage> createState() => _SelectPurposePageState();
+  State<SelectPurposeForSendMoneyPage> createState() =>
+      _SelectPurposeForSendMoneyPageState();
 }
 
-class _SelectPurposePageState extends State<SelectPurposePage> {
+class _SelectPurposeForSendMoneyPageState
+    extends State<SelectPurposeForSendMoneyPage> {
   int selected = 0;
 
   Widget purposeItem({
@@ -172,7 +174,7 @@ class _SelectPurposePageState extends State<SelectPurposePage> {
               "Continue",
               textalign: TextAlign.center,
               onTap: () {
-                context.goNamed(AppRoutes.enterAmountScreen);
+                context.goNamed(AppRoutes.sendEnterAmount);
               },
             ),
 

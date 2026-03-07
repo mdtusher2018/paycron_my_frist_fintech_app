@@ -5,14 +5,16 @@ import 'package:paycron_app/src/presentation/router/routes.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_button.dart';
 
-class EnterAmountPage extends StatefulWidget {
-  const EnterAmountPage({super.key});
+class EnterAmountForSendMoneyPage extends StatefulWidget {
+  const EnterAmountForSendMoneyPage({super.key});
 
   @override
-  State<EnterAmountPage> createState() => _EnterAmountPageState();
+  State<EnterAmountForSendMoneyPage> createState() =>
+      _EnterAmountForSendMoneyPageState();
 }
 
-class _EnterAmountPageState extends State<EnterAmountPage> {
+class _EnterAmountForSendMoneyPageState
+    extends State<EnterAmountForSendMoneyPage> {
   final TextEditingController amountController = TextEditingController();
 
   Widget quickAmount(double amount) {
@@ -134,7 +136,7 @@ class _EnterAmountPageState extends State<EnterAmountPage> {
               "Continue",
               textalign: TextAlign.center,
               onTap: () {
-                context.goNamed(AppRoutes.enterPinScreen);
+                context.goNamed(AppRoutes.sendEnterPin);
               },
             ),
 

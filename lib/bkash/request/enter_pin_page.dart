@@ -5,14 +5,16 @@ import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 import 'package:go_router/go_router.dart';
 import 'package:paycron_app/src/presentation/router/routes.dart';
 
-class EnterPinPage extends StatefulWidget {
-  const EnterPinPage({super.key});
+class EnterPinForRequestMoneyPage extends StatefulWidget {
+  const EnterPinForRequestMoneyPage({super.key});
 
   @override
-  State<EnterPinPage> createState() => _EnterPinPageState();
+  State<EnterPinForRequestMoneyPage> createState() =>
+      _EnterPinForRequestMoneyPageState();
 }
 
-class _EnterPinPageState extends State<EnterPinPage> {
+class _EnterPinForRequestMoneyPageState
+    extends State<EnterPinForRequestMoneyPage> {
   String pin = "";
 
   void addDigit(String digit) {
@@ -23,7 +25,7 @@ class _EnterPinPageState extends State<EnterPinPage> {
 
       if (pin.length == 4) {
         Future.delayed(const Duration(milliseconds: 300), () {
-          context.goNamed(AppRoutes.transactionCompletePage);
+          context.goNamed(AppRoutes.receiveComplete);
         });
       }
     }

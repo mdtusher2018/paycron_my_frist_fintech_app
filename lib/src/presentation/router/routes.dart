@@ -19,13 +19,21 @@ class AppRoutes {
   static const String idVerificationProgressScreen = '/idVerificationProgress';
   static const String scanIdScreen = '/scanId';
 
-  // Send Money Flow
-  static const String chooseRecipientScreen = '/choose-recipient';
-  static const String selectPurposeScreen = 'select-purpose';
-  static const String enterAmountScreen = 'enter-amount';
-  static const String enterPinScreen = 'enter-pin-page';
-  static const String transactionCompletePage = 'transaction-complete-page';
-  static const String scanQrPayScreen = 'scan-qr-pay';
+  // Send Money
+  static const String sendChooseRecipient = '/send-choose-recipient';
+  static const String sendScanQr = '/send-scan-qr';
+  static const String sendSelectPurpose = '/send-select-purpose';
+  static const String sendEnterAmount = '/send-enter-amount';
+  static const String sendEnterPin = '/send-enter-pin';
+  static const String sendComplete = '/send-complete';
+
+  // Receive Money
+  static const String receiveChooseRecipient = '/receive-choose-recipient';
+  static const String receiveScanQr = '/receive-scan-qr';
+  static const String receiveSelectPurpose = '/receive-select-purpose';
+  static const String receiveEnterAmount = '/receive-enter-amount';
+  static const String receiveEnterPin = '/receive-enter-pin';
+  static const String receiveComplete = '/receive-complete';
 
   static const String splash = '/';
   static const String signIn = '/signin';
