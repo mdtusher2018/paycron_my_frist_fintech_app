@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:paycron_app/src/core/di/dependency_injection.dart';
+import 'package:paycron_app/src/core/utils/logger.dart';
 import 'package:paycron_app/src/presentation/router/routes.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_button.dart';
 
-class EnterAmountForSendMoneyPage extends StatefulWidget {
-  const EnterAmountForSendMoneyPage({super.key});
+class EnterAmountForSendMoneyPage extends ConsumerStatefulWidget {
+  final String email, purpose;
+  const EnterAmountForSendMoneyPage({
+    super.key,
+    required this.email,
+    required this.purpose,
+  });
 
   @override
-  State<EnterAmountForSendMoneyPage> createState() =>
+  ConsumerState<EnterAmountForSendMoneyPage> createState() =>
       _EnterAmountForSendMoneyPageState();
 }
 
 class _EnterAmountForSendMoneyPageState
-    extends State<EnterAmountForSendMoneyPage> {
+    extends ConsumerState<EnterAmountForSendMoneyPage> {
   final TextEditingController amountController = TextEditingController();
 
   Widget quickAmount(double amount) {
@@ -56,7 +64,9 @@ class _EnterAmountForSendMoneyPageState
         children: [
           CircleAvatar(
             radius: 26.r,
-            backgroundImage: const AssetImage("assets/user.jpg"),
+            backgroundImage: NetworkImage(
+              "https://static.vecteezy.com/system/resources/previews/015/399/302/non_2x/trendy-male-model-vector.jpg",
+            ),
           ),
 
           SizedBox(width: 12.w),
@@ -136,7 +146,25 @@ class _EnterAmountForSendMoneyPageState
               "Continue",
               textalign: TextAlign.center,
               onTap: () {
-                context.goNamed(AppRoutes.sendEnterPin);
+                final amount = double.tryParse(amountController.text) ?? 0;
+                AppLogger.log(amount.toString());
+                if (amount <= 0) {
+                      AppLogger.log(amount.toString());
+                  ref
+                      .read(snackBarServiceProvider)
+                      .showError("Please enter a valid amount",context: ref.context);
+
+                  return;
+                }
+
+                context.goNamed(
+                  AppRoutes.sendEnterPin,
+                  extra: {
+                    "email": widget.email,
+                    "purpose": widget.purpose,
+                    "amount": amount,
+                  },
+                );
               },
             ),
 

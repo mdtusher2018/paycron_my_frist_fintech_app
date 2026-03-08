@@ -18,7 +18,7 @@ extension InputValidator on String {
   /// ✅ Password validation (6–16 chars)
   /// ---------------------------
   bool get isValidPassword {
-    final passRegex = RegExp(r'^.{6,16}$');
+    final passRegex = RegExp(r'^.{4,4}$');
     return passRegex.hasMatch(trim());
   }
 

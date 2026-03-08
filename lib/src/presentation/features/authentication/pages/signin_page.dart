@@ -16,7 +16,7 @@ class SigninPage extends ConsumerWidget {
   SigninPage({super.key});
 
   final emailCtrl = TextEditingController(text: "tusher@gmail.com");
-  final passCtrl = TextEditingController(text: "123456");
+  final passCtrl = TextEditingController(text: "hello123");
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

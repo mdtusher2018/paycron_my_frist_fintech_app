@@ -108,7 +108,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           children: [
             InkWell(
               onTap: () {
-                context.pushNamed(AppRoutes.sendMoney);
+                context.push(AppRoutes.sendChooseRecipient);
               },
               child: _ActionItem(icon: Icons.send, label: "Send"),
             ),

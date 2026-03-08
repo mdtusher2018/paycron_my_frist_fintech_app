@@ -37,6 +37,21 @@ final class HomeRepository extends IHomeRepository {
   }
 
   @override
+  Future<Result<bool, Failure>> checkEmailExists({
+    required String email,
+  }) {
+    return asyncGuard(() async {
+      final result =
+          await _apiService.post(ApiEndpoints.checkEmailExists, {
+                "email": email,
+              })
+              as Map<String, dynamic>;
+
+      final status = result['status'] as bool;
+      return status;
+    });
+  }
+  @override
   Future<Result<String, Failure>> depositeSucess({
     required String paymentIntent,
   }) {
@@ -55,12 +70,15 @@ final class HomeRepository extends IHomeRepository {
   @override
   Future<Result<CreateTransactionResponse, Failure>> sendMoney({
     required String email,
-    required num amount,
+    required num amount,    required String purpose,
+    required String pin,
   }) {
     return asyncGuard(() async {
       final result = await _apiService.patch(ApiEndpoints.transferMoney, {
         "receiverEmail": email,
         "amount": amount,
+        "purpose":purpose,
+        "pin":pin
       });
       return CreateTransactionResponse.fromJson(result);
     });

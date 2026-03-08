@@ -7,7 +7,8 @@ import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_button.dart';
 
 class SelectPurposeForSendMoneyPage extends StatefulWidget {
-  const SelectPurposeForSendMoneyPage({super.key});
+  final String email;
+  const SelectPurposeForSendMoneyPage({super.key, required this.email});
 
   @override
   State<SelectPurposeForSendMoneyPage> createState() =>
@@ -18,6 +19,7 @@ class _SelectPurposeForSendMoneyPageState
     extends State<SelectPurposeForSendMoneyPage> {
   int selected = 0;
 
+  final List<String> purposes = ["personal", "business", "payment"];
   Widget purposeItem({
     required String title,
     required String subtitle,
@@ -174,7 +176,10 @@ class _SelectPurposeForSendMoneyPageState
               "Continue",
               textalign: TextAlign.center,
               onTap: () {
-                context.goNamed(AppRoutes.sendEnterAmount);
+                context.goNamed(
+                  AppRoutes.sendEnterAmount,
+                  extra: {"email": widget.email, "purpose": purposes[selected]},
+                );
               },
             ),
 

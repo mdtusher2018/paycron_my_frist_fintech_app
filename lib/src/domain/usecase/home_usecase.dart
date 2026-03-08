@@ -54,13 +54,32 @@ class HomeUsecase {
     return Success(transactionList);
   }
 
+  Future<Result<bool, Failure>> checkEmailExists({
+    required String email,
+  }) async {
+    final result = await repository.checkEmailExists(email: email);
+
+    if (result is FailureResult) {
+      final error = (result as FailureResult).error as Failure;
+      return FailureResult(error);
+    }
+
+    final status = (result as Success).data as bool;
+
+    return Success(status);
+  }
+
   Future<Result<String, Failure>> sendMoney({
     required num amount,
     required String reciverEmail,
+    required String purpose,
+    required String pin,
   }) async {
     final result = await repository.sendMoney(
       amount: amount,
       email: reciverEmail,
+      pin: pin,
+      purpose: purpose
     );
 
     if (result is FailureResult) {
@@ -73,7 +92,9 @@ class HomeUsecase {
     return Success(balanceModel.message);
   }
 
-  Future<Result<(String,String), Failure>> deposite({required num amount}) async {
+  Future<Result<(String, String), Failure>> deposite({
+    required num amount,
+  }) async {
     final result = await repository.deposite(amount: amount);
 
     if (result is FailureResult) {
@@ -81,7 +102,7 @@ class HomeUsecase {
       return FailureResult(error);
     }
 
-    final paymentScreate = (result as Success).data as (String,String);
+    final paymentScreate = (result as Success).data as (String, String);
 
     return Success(paymentScreate);
   }

@@ -6,8 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:paycron_app/src/core/services/storage/local_storage_service.dart';
 import 'package:paycron_app/src/presentation/router/app_router.dart';
-import 'src/core/di/dependency_injection.dart';
-import 'package:paycron_app/src/core/services/snackbar/snackbar_service.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,12 +31,12 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final snackBarService = ref.read(snackBarServiceProvider);
+
     final router = ref.watch(appRouterProvider);
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       child: MaterialApp.router(
-        scaffoldMessengerKey: (snackBarService as SnackBarService).messengerKey,
+
         title: 'paycron_app App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue),

@@ -52,15 +52,14 @@ class _ConfirmPhoneScreenState extends ConsumerState<ConfirmPhoneScreen> {
 
         next.whenOrNull(
           error: (err, _) {
-            ref.read(snackBarServiceProvider).showError(
-                  err.toString(),
-                  context: context,
-                );
+            ref
+                .read(snackBarServiceProvider)
+                .showError(err.toString(), context: ref.context);
           },
         );
       },
     );
-  
+
     return Scaffold(
       backgroundColor: AppColors.mainBG,
       appBar: AppBar(

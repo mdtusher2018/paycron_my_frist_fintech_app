@@ -8,9 +8,12 @@ import 'package:paycron_app/src/data/models/get_transaction/get_my_transaction_r
 abstract base class IHomeRepository extends Repository {
   Future<Result<GetMyBalance, Failure>> getBalance();
   Future<Result<TransactionResponse, Failure>> getMyTransactions();
+  Future<Result<bool, Failure>> checkEmailExists({required String email});
   Future<Result<CreateTransactionResponse, Failure>> sendMoney({
     required String email,
     required num amount,
+    required String purpose,
+    required String pin,
   });
   Future<Result<String, Failure>> getMyUserId();
 

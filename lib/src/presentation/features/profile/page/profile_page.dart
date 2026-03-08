@@ -14,7 +14,7 @@ class ProfilePage extends ConsumerWidget {
     if (next is ProfileError && next.profile != null) {
       ref
           .read(snackBarServiceProvider)
-          .showError(next.error.toString(), context: context);
+          .showError(next.error.toString(),context: ref.context);
     }
   });
     return Scaffold(

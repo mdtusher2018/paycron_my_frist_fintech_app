@@ -3,14 +3,10 @@ import 'package:flutter/material.dart';
 import 'i_snackbar_service.dart';
 
 final class SnackBarService implements ISnackBarService {
-  final GlobalKey<ScaffoldMessengerState> _messengerKey =
-      GlobalKey<ScaffoldMessengerState>();
-
-  GlobalKey<ScaffoldMessengerState> get messengerKey => _messengerKey;
 
   @override
-  void showError(String message, {required BuildContext context}) {
-    ScaffoldMessenger.of(context).showSnackBar(
+  void showError(String message,{required BuildContext context}) {
+   ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
         backgroundColor: Colors.red,
@@ -28,8 +24,8 @@ final class SnackBarService implements ISnackBarService {
   }
 
   @override
-  void showSuccess(String message) {
-    _messengerKey.currentState?.showSnackBar(
+  void showSuccess(String message,{required BuildContext context}) {
+    ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
         backgroundColor: Colors.green,

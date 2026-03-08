@@ -44,7 +44,7 @@ class SendMoneyPage extends ConsumerWidget {
 
       final result = await homeUsecase.sendMoney(
         amount: amount,
-        reciverEmail: email,
+        reciverEmail: email,pin: "",purpose: ""
       );
 
       Navigator.of(context).pop(); // Close loading

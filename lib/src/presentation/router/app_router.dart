@@ -12,12 +12,12 @@ import 'package:paycron_app/bkash/request/enter_amount_page.dart';
 import 'package:paycron_app/bkash/request/enter_pin_page.dart';
 import 'package:paycron_app/bkash/request/scan_qr_for_request_money_page.dart';
 import 'package:paycron_app/bkash/request/select_purpose_page.dart';
-import 'package:paycron_app/bkash/send/choose_recipient_page.dart';
-import 'package:paycron_app/bkash/send/enter_pin_for_send_money_page.dart';
-import 'package:paycron_app/bkash/send/enter_amount_for_send_money_page.dart';
-import 'package:paycron_app/bkash/send/scan_qr_for_send_money_page.dart';
-import 'package:paycron_app/bkash/send/select_purpose_for_send_money_page.dart';
-import 'package:paycron_app/bkash/send/send_transaction_complete_page.dart';
+import 'package:paycron_app/src/presentation/features/send/choose_recipient_page.dart';
+import 'package:paycron_app/src/presentation/features/send/enter_pin_for_send_money_page.dart';
+import 'package:paycron_app/src/presentation/features/send/enter_amount_for_send_money_page.dart';
+import 'package:paycron_app/src/presentation/features/send/scan_qr_for_send_money_page.dart';
+import 'package:paycron_app/src/presentation/features/send/select_purpose_for_send_money_page.dart';
+import 'package:paycron_app/src/presentation/features/send/send_transaction_complete_page.dart';
 import 'package:paycron_app/src/presentation/features/authentication/pages/registration/confirm_phone_screen.dart';
 import 'package:paycron_app/bkash/on_boarding/create_account_intro_screen.dart';
 import 'package:paycron_app/src/presentation/features/authentication/pages/registration/create_account_screen.dart';
@@ -40,7 +40,7 @@ part 'parts/receive_money_routes.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: AppRoutes.receiveChooseRecipient,
+    initialLocation: AppRoutes.onboardingScreen,
     routes: [
       ..._onboardingRoutes(),
       ..._registrationRoutes(),

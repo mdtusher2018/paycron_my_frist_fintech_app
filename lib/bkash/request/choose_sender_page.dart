@@ -28,7 +28,7 @@ class ChooseSenderPage extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 22.r,
-            backgroundImage: const AssetImage("assets/user.jpg"),
+            backgroundImage: NetworkImage("https://static.vecteezy.com/system/resources/previews/015/399/302/non_2x/trendy-male-model-vector.jpg"),
           ),
 
           SizedBox(width: 12.w),

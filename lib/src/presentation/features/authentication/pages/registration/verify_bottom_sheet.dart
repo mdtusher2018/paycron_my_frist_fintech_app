@@ -33,7 +33,7 @@ class _VerifyBottomSheetState extends ConsumerState<VerifyBottomSheet> {
           context.pop();
           ref
               .read(snackBarServiceProvider)
-              .showError(error.toString(), context: context);
+              .showError(error.toString(),context: ref.context);
         },
       );
     });
