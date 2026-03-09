@@ -15,6 +15,12 @@ abstract base class IHomeRepository extends Repository {
     required String purpose,
     required String pin,
   });
+   Future<Result<CreateTransactionResponse, Failure>> reciveMoneyRequest({
+    required String email,
+    required num amount,
+    required String purpose,
+    required String pin,
+  });
   Future<Result<String, Failure>> getMyUserId();
 
   Future<Result<(String, String), Failure>> deposite({

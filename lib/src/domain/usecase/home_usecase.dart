@@ -98,7 +98,7 @@ class HomeUsecase {
     required String purpose,
     required String pin,
   }) async {
-    final result = await repository.sendMoney(
+    final result = await repository.reciveMoneyRequest(
       amount: amount,
       email: reciverEmail,
       pin: pin,
