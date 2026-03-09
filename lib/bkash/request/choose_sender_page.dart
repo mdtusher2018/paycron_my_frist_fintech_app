@@ -1,13 +1,27 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/base/result.dart';
+import 'package:paycron_app/src/core/di/dependency_injection.dart';
+import 'package:paycron_app/src/core/utils/extension/validator_extension.dart';
 import 'package:paycron_app/src/presentation/router/routes.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_button.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text_field.dart';
 
-class ChooseSenderPage extends StatelessWidget {
+class ChooseSenderPage extends ConsumerStatefulWidget {
   const ChooseSenderPage({super.key});
+
+  @override
+  ConsumerState<ChooseSenderPage> createState() => _ChooseSenderPageState();
+}
+
+class _ChooseSenderPageState extends ConsumerState<ChooseSenderPage> {
+  final TextEditingController senderTextEditingController =
+      TextEditingController(text: kDebugMode ? "tusher@gmail.com" : null);
 
   Widget senderItem(BuildContext context) {
     return Container(
@@ -28,7 +42,9 @@ class ChooseSenderPage extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 22.r,
-            backgroundImage: NetworkImage("https://static.vecteezy.com/system/resources/previews/015/399/302/non_2x/trendy-male-model-vector.jpg"),
+            backgroundImage: NetworkImage(
+              "https://static.vecteezy.com/system/resources/previews/015/399/302/non_2x/trendy-male-model-vector.jpg",
+            ),
           ),
 
           SizedBox(width: 12.w),
@@ -115,7 +131,12 @@ class ChooseSenderPage extends StatelessWidget {
 
             SizedBox(height: 10.h),
 
-            CommonButton("Receive"),
+            CommonButton(
+              "Receive",
+              onTap: () {
+                _reciveRequestMoney();
+              },
+            ),
 
             SizedBox(height: 10.h),
 
@@ -148,5 +169,38 @@ class ChooseSenderPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _reciveRequestMoney() async {
+    final email = senderTextEditingController.text;
+    if (!email.isValidEmail) {
+      ref
+          .read(snackBarServiceProvider)
+          .showError("Invalid Email", context: ref.context);
+      return;
+    }
+    // Show loading
+    showDialog(
+      context: ref.context,
+      barrierDismissible: false,
+      builder: (_) => const Center(child: CircularProgressIndicator()),
+    );
+
+    final response = await ref
+        .read(homeUsecaseProvider)
+        .checkEmailExists(email: email);
+
+    Navigator.of(ref.context).pop(); // Close loading
+
+    if (response is Success<bool, Failure>) {
+      ref.context.pushNamed(
+        AppRoutes.receiveSelectPurpose,
+        extra: {"email": email},
+      );
+    } else {
+      ref
+          .read(snackBarServiceProvider)
+          .showError("User not Exist", context: ref.context);
+    }
   }
 }

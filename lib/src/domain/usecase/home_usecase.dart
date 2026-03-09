@@ -79,7 +79,30 @@ class HomeUsecase {
       amount: amount,
       email: reciverEmail,
       pin: pin,
-      purpose: purpose
+      purpose: purpose,
+    );
+
+    if (result is FailureResult) {
+      final error = (result as FailureResult).error as Failure;
+      return FailureResult(error);
+    }
+
+    final balanceModel = (result as Success).data as CreateTransactionResponse;
+
+    return Success(balanceModel.message);
+  }
+
+  Future<Result<String, Failure>> reciveMoneyRequest({
+    required num amount,
+    required String reciverEmail,
+    required String purpose,
+    required String pin,
+  }) async {
+    final result = await repository.sendMoney(
+      amount: amount,
+      email: reciverEmail,
+      pin: pin,
+      purpose: purpose,
     );
 
     if (result is FailureResult) {

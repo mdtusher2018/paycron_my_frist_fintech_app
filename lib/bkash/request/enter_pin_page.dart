@@ -1,32 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:paycron_app/src/core/base/failure.dart';
+import 'package:paycron_app/src/core/base/result.dart';
+import 'package:paycron_app/src/core/di/dependency_injection.dart';
 
 import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 import 'package:go_router/go_router.dart';
 import 'package:paycron_app/src/presentation/router/routes.dart';
 
-class EnterPinForRequestMoneyPage extends StatefulWidget {
-  const EnterPinForRequestMoneyPage({super.key});
+class EnterPinForRequestMoneyPage extends ConsumerStatefulWidget {
+  final String email, purpose;
+  final num amount;
+  const EnterPinForRequestMoneyPage({
+    super.key,
+    required this.amount,
+    required this.email,
+    required this.purpose,
+  });
 
   @override
-  State<EnterPinForRequestMoneyPage> createState() =>
+  ConsumerState<EnterPinForRequestMoneyPage> createState() =>
       _EnterPinForRequestMoneyPageState();
 }
 
 class _EnterPinForRequestMoneyPageState
-    extends State<EnterPinForRequestMoneyPage> {
+    extends ConsumerState<EnterPinForRequestMoneyPage> {
   String pin = "";
 
-  void addDigit(String digit) {
+  void addDigit(String digit) async {
     if (pin.length < 4) {
       setState(() {
         pin += digit;
       });
 
       if (pin.length == 4) {
-        Future.delayed(const Duration(milliseconds: 300), () {
+        final homeUsecase = ref.read(homeUsecaseProvider);
+
+        // Show loading
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (_) => const Center(child: CircularProgressIndicator()),
+        );
+
+        final result = await homeUsecase.reciveMoneyRequest(
+          amount: widget.amount,
+          reciverEmail: widget.email,
+          purpose: widget.purpose,
+          pin: pin,
+        );
+
+        Navigator.of(context).pop(); // Close loading
+
+        if (result is Success) {
           context.goNamed(AppRoutes.receiveComplete);
-        });
+        } else if (result is FailureResult) {
+          final error = (result as FailureResult).error as Failure;
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(error.message)));
+        } else {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("Transaction failed")));
+        }
       }
     }
   }
