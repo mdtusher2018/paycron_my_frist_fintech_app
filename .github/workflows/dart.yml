@@ -1,40 +1,29 @@
-name: Flutter - Android Build apk
-
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    branches:
+      - main
+name: Test
 jobs:
-  build:
+  android-release-build:
+    name: android-release-build
     runs-on: ubuntu-latest
-
+    container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
-
-      - name: Setup JDK
-        uses: actions/setup-java@v5
+      - uses: actions/checkout@v2
+      - uses: NiklasLehnfeld/flutter-android-build-action@v1
+        id: android-build
         with:
-          java-version: '21'
-          distribution: 'zulu'
-
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+          release: true
+          keystore: ${{ secrets.KEYSTORE }}
+          keystore-pwd: "${{ secrets.KEYSTORE_PASSWORD }}"
+          key-pwd: "${{ secrets.KEY_PASSWORD }}"
+      - name: Archive APK
+        uses: actions/upload-artifact@v2
         with:
-          channel: 'stable'
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build APK
-        run: flutter build apk --release --build-name=1.0.0
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
+          name: release-apk
+          path: ${{ steps.android-build.outputs.apk-path }}
+      - name: Archive AAB
+        uses: actions/upload-artifact@v2
         with:
-          name: release-flutter-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
-
-        
+          name: release-aab
+          path: ${{ steps.android-build.outputs.aab-path }}
