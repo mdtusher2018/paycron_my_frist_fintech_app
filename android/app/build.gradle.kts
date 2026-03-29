@@ -27,7 +27,7 @@ android {
     }
 
     kotlinOptions {
-        jvmToolchain(17)
+        jvmTarget = "17"
     }
 
     defaultConfig {
