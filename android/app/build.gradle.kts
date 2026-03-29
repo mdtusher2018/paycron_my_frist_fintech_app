@@ -31,10 +31,10 @@ android {
     }
     signingConfigs {
         release {
-            keyAlias System.env.KEY_ALIAS ?: ''
-            keyPassword System.env.KEY_PWD ?: ''
-            storeFile file('../keystore.jks')
-            storePassword System.env.KEYSTORE_PWD ?: ''
+            storeFile file("../keystore.jks")
+            storePassword System.getenv("STORE_PASSWORD")
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
         }
     }
     buildTypes {
