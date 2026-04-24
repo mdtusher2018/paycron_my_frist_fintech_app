@@ -15,7 +15,7 @@ abstract base class IHomeRepository extends Repository {
     required String purpose,
     required String pin,
   });
-   Future<Result<CreateTransactionResponse, Failure>> reciveMoneyRequest({
+  Future<Result<CreateTransactionResponse, Failure>> reciveMoneyRequest({
     required String email,
     required num amount,
     required String purpose,
@@ -29,5 +29,9 @@ abstract base class IHomeRepository extends Repository {
   });
   Future<Result<String, Failure>> depositeSucess({
     required String paymentIntent,
+  });
+  Future<Result<String, Failure>> payWithSavedCard({
+    required num amount,
+    required String paymentMethodId,
   });
 }

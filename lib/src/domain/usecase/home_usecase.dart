@@ -146,4 +146,23 @@ class HomeUsecase {
 
     return Success(paymentScreate);
   }
+
+  Future<Result<String, Failure>> payWithSavedCard({
+    required num amount,
+    required String paymentMethodId,
+  }) async {
+    final result = await repository.payWithSavedCard(
+      amount: amount,
+      paymentMethodId: paymentMethodId,
+    );
+
+    if (result is FailureResult) {
+      final error = (result as FailureResult).error as Failure;
+      return FailureResult(error);
+    }
+
+    final message = (result as Success).data as String;
+
+    return Success(message);
+  }
 }

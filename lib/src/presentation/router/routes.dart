@@ -41,4 +41,8 @@ class AppRoutes {
   static const String home = '/home';
   static const String sendMoney = '/send-money';
   static const String addMoney = '/add-money';
+
+  // NEW: Cards & Requests
+  static const String cardsManagement = '/cards-management';
+  static const String moneyRequests = '/money-requests';
 }

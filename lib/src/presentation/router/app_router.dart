@@ -12,6 +12,8 @@ import 'package:paycron_app/bkash/request/enter_amount_page.dart';
 import 'package:paycron_app/bkash/request/enter_pin_page.dart';
 import 'package:paycron_app/bkash/request/scan_qr_for_request_money_page.dart';
 import 'package:paycron_app/bkash/request/select_purpose_page.dart';
+import 'package:paycron_app/src/presentation/cards/cards_management_page.dart';
+import 'package:paycron_app/src/presentation/features/root_view.dart';
 import 'package:paycron_app/src/presentation/features/send/choose_recipient_page.dart';
 import 'package:paycron_app/src/presentation/features/send/enter_pin_for_send_money_page.dart';
 import 'package:paycron_app/src/presentation/features/send/enter_amount_for_send_money_page.dart';
@@ -27,8 +29,9 @@ import 'package:paycron_app/src/presentation/features/account_setup/country_resi
 import 'package:paycron_app/src/presentation/features/account_setup/home_address_screen.dart';
 import 'package:paycron_app/src/presentation/features/authentication/pages/signin_page.dart';
 import 'package:paycron_app/src/presentation/features/home/add_money_view.dart';
-import 'package:paycron_app/src/presentation/features/home/home_view.dart';
+
 import 'package:paycron_app/src/presentation/features/home/send_money_view.dart';
+import 'package:paycron_app/src/presentation/requests/money_requests_page.dart';
 import 'routes.dart';
 
 part 'parts/onboarding_routes.dart';
@@ -58,7 +61,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.home,
         name: AppRoutes.home,
-        builder: (context, state) => const HomePage(),
+        builder: (context, state) => const RootView(),
       ),
 
       GoRoute(
@@ -70,6 +73,18 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         path: AppRoutes.addMoney,
         name: AppRoutes.addMoney,
         builder: (context, state) => AddMoneyPage(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.cardsManagement,
+        name: AppRoutes.cardsManagement,
+        builder: (context, state) => const CardsManagementPage(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.moneyRequests,
+        name: AppRoutes.moneyRequests,
+        builder: (context, state) => const MoneyRequestsPage(),
       ),
     ],
   );

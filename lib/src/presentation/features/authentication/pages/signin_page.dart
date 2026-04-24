@@ -9,19 +9,14 @@ import 'package:paycron_app/src/presentation/features/authentication/notifiers/s
 import 'package:paycron_app/src/presentation/shared/widgets/common_button.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text_field_with_title.dart';
 
-
-
-
 class SigninPage extends ConsumerWidget {
   SigninPage({super.key});
 
-  final emailCtrl = TextEditingController(text: "tusher@gmail.com");
-  final passCtrl = TextEditingController(text: "hello123");
+  final emailCtrl = TextEditingController(text: "user@gmail.com");
+  final passCtrl = TextEditingController(text: "1234");
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
-
     final signinState = ref.watch(loginNotifierProvider);
     ref.listen<AsyncValue<SigninEntity?>>(loginNotifierProvider, (prev, next) {
       next.when(
@@ -60,17 +55,8 @@ class SigninPage extends ConsumerWidget {
               child: Column(
                 spacing: 16,
                 children: [
-                  CommonTextfieldWithTitle(
-                    "Email",
-                    emailCtrl,
-                
-                  ),
-                  CommonTextfieldWithTitle(
-                    "Password",
-               
-
-                    passCtrl,
-                  ),
+                  CommonTextfieldWithTitle("Email", emailCtrl),
+                  CommonTextfieldWithTitle("Password", passCtrl),
                   const SizedBox(height: 20),
 
                   CommonButton(
@@ -85,7 +71,6 @@ class SigninPage extends ConsumerWidget {
                           );
                     },
                   ),
-              
 
                   InkWell(
                     onTap: () {

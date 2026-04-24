@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:paycron_app/src/core/base/result.dart';
 import 'package:paycron_app/src/core/base/failure.dart';
 import 'package:paycron_app/src/core/di/dependency_injection.dart';
+import 'package:paycron_app/src/presentation/features/home/select_payment_method_view.dart';
 import 'package:paycron_app/src/presentation/features/home/stripe_payment.dart';
+import 'package:paycron_app/src/presentation/shared/themes/colors.dart';
+import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
 
 //Device nai...............
 //wait
@@ -79,8 +83,18 @@ class AddMoneyPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text("Add Money"),
-        backgroundColor: const Color(0xFF4A6CF7),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: AppColors.white),
+          onPressed: () => context.pop(),
+        ),
+        title: CommonText(
+          "Add Money",
+          color: AppColors.white,
+          size: 21,
+          isBold: true,
+        ),
+        backgroundColor: AppColors.primary,
+        centerTitle: true,
         elevation: 0,
       ),
       body: Padding(
@@ -113,14 +127,24 @@ class AddMoneyPage extends ConsumerWidget {
 
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4A6CF7),
+                  backgroundColor: AppColors.primary,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
                 onPressed: () {
-                  addMoney(ref: ref);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SelectPaymentMethodPage(
+                          amount: double.tryParse(amountController.text) ?? 0,
+                        );
+                      },
+                    ),
+                  );
+                  // addMoney(ref: ref);
                 },
                 child: const Text("Add Money", style: TextStyle(fontSize: 18)),
               ),

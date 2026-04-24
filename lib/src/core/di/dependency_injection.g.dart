@@ -126,6 +126,41 @@ final homeRepositoryProvider = AutoDisposeProvider<IHomeRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef HomeRepositoryRef = AutoDisposeProviderRef<IHomeRepository>;
+String _$cardRepositoryHash() => r'00e43223ee03f9741266c5b444e6c7da6f32c496';
+
+/// See also [cardRepository].
+@ProviderFor(cardRepository)
+final cardRepositoryProvider = AutoDisposeProvider<ICardRepository>.internal(
+  cardRepository,
+  name: r'cardRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$cardRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef CardRepositoryRef = AutoDisposeProviderRef<ICardRepository>;
+String _$requestRepositoryHash() => r'1b27e8c72750232d0158be158cd032623f3a15a5';
+
+/// See also [requestRepository].
+@ProviderFor(requestRepository)
+final requestRepositoryProvider =
+    AutoDisposeProvider<IRequestRepository>.internal(
+      requestRepository,
+      name: r'requestRepositoryProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$requestRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RequestRepositoryRef = AutoDisposeProviderRef<IRequestRepository>;
 String _$loginUseCaseHash() => r'163df60300194b03596a94b15320fe1fa534d4a3';
 
 /// See also [loginUseCase].
@@ -233,5 +268,39 @@ final completeProfileUsecaseProvider =
 // ignore: unused_element
 typedef CompleteProfileUsecaseRef =
     AutoDisposeProviderRef<CompleteProfileUsecase>;
+String _$cardUsecaseHash() => r'e3ce8d28686f4a41e13341c1d34251a887389530';
+
+/// See also [cardUsecase].
+@ProviderFor(cardUsecase)
+final cardUsecaseProvider = AutoDisposeProvider<CardUsecase>.internal(
+  cardUsecase,
+  name: r'cardUsecaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$cardUsecaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef CardUsecaseRef = AutoDisposeProviderRef<CardUsecase>;
+String _$requestUsecaseHash() => r'0d3f6ef7bd6f00390129e191fbb6536316b83bb0';
+
+/// See also [requestUsecase].
+@ProviderFor(requestUsecase)
+final requestUsecaseProvider = AutoDisposeProvider<RequestUsecase>.internal(
+  requestUsecase,
+  name: r'requestUsecaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$requestUsecaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RequestUsecaseRef = AutoDisposeProviderRef<RequestUsecase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

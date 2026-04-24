@@ -6,6 +6,7 @@ import 'package:paycron_app/src/core/services/network/i_api_service.dart';
 import 'package:paycron_app/src/core/services/storage/i_local_storage_service.dart';
 import 'package:paycron_app/src/core/services/storage/storage_key.dart';
 import 'package:paycron_app/src/core/utils/api_end_points.dart';
+import 'package:paycron_app/src/core/utils/logger.dart';
 import 'package:paycron_app/src/data/models/create_transaction/create_transaction_response.dart';
 import 'package:paycron_app/src/data/models/get_balance/get_my_balance_response.dart';
 import 'package:paycron_app/src/data/models/get_transaction/get_my_transaction_response.dart';
@@ -133,6 +134,23 @@ final class HomeRepository extends IHomeRepository {
     return asyncGuard(() async {
       final result = await _apiService.get(ApiEndpoints.getMyTransaction);
       return TransactionResponse.fromJson(result);
+    });
+  }
+
+  @override
+  Future<Result<String, Failure>> payWithSavedCard({
+    required num amount,
+    required String paymentMethodId,
+  }) {
+    return asyncGuard(() async {
+      final result = await _apiService.post(ApiEndpoints.payWithSavedCard, {
+        "amount": amount,
+        "payment_method": paymentMethodId,
+      });
+
+      AppLogger.log(result.toString());
+      final message = result['message'] as String;
+      return message;
     });
   }
 }

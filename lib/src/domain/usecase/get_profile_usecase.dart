@@ -17,7 +17,7 @@ class GetProfileUsecase {
 
     final userModel = (result as Success).data as ProfileResponse;
     final GetMyProfileEntity userEntity = GetMyProfileEntity(
-      userName: userModel.data.attributes.first.fullName,
+      userName: "${userModel.data.firstName} ${userModel.data.lastName}",
     );
     return Success(userEntity);
   }

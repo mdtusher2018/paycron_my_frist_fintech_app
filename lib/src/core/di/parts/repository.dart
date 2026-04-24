@@ -16,3 +16,12 @@ IProfileRepository profileRepository(Ref ref) {
 IHomeRepository homeRepository(Ref ref) {
   return HomeRepository(ref.watch(apiServiceProvider),ref.watch(localStorageProvider));
 }
+@riverpod
+ICardRepository cardRepository(Ref ref) {
+  return CardRepository(ref.watch(apiServiceProvider));
+}
+
+@riverpod
+IRequestRepository requestRepository(Ref ref) {
+  return RequestRepository(ref.watch(apiServiceProvider));
+}

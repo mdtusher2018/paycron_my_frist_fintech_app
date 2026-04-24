@@ -25,7 +25,7 @@ dependencies:
   freezed_annotation: ^3.0.0
   json_annotation: 
   intl: ^0.20.2
-  flutter_stripe: ^12.3.0
+  flutter_stripe: ^12.6.0
   camera: ^0.12.0
 
 dev_dependencies:

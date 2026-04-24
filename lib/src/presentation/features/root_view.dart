@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paycron_app/src/presentation/features/home/home_view.dart';
-
+import 'package:paycron_app/src/presentation/features/profile/page/profile_page.dart';
 
 class RootView extends StatefulWidget {
   const RootView({super.key});
@@ -12,12 +12,12 @@ class RootView extends StatefulWidget {
 class _RootViewState extends State<RootView> {
   int currentIndex = 0;
 
-  final List<Widget> pages = const [
+  final List<Widget> pages = [
     HomePage(),
     Center(child: Text("Analytics")),
     Center(child: Text("Scan")),
     Center(child: Text("Chat")),
-    Center(child: Text("Profile")),
+    ProfilePage(),
   ];
 
   @override

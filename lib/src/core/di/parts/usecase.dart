@@ -38,3 +38,13 @@ GetProfileUsecase profileUsecase(Ref ref) {
 CompleteProfileUsecase completeProfileUsecase(Ref ref) {
   return CompleteProfileUsecase(repo: ref.watch(profileRepositoryProvider));
 }
+
+@riverpod
+CardUsecase cardUsecase(Ref ref) {
+  return CardUsecase(repository: ref.watch(cardRepositoryProvider));
+}
+
+@riverpod
+RequestUsecase requestUsecase(Ref ref) {
+  return RequestUsecase(repository: ref.watch(requestRepositoryProvider));
+}

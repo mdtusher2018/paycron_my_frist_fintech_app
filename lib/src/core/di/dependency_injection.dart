@@ -1,6 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:paycron_app/src/data/repositories/card_repository.dart';
+import 'package:paycron_app/src/data/repositories/request_repository.dart';
+import 'package:paycron_app/src/domain/repositories/i_card_repository.dart';
+import 'package:paycron_app/src/domain/repositories/i_request_repository.dart';
+import 'package:paycron_app/src/domain/usecase/card_usecase.dart';
 import 'package:paycron_app/src/domain/usecase/complete_profile_usecase.dart';
 import 'package:paycron_app/src/domain/usecase/get_profile_usecase.dart';
+import 'package:paycron_app/src/domain/usecase/request_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:paycron_app/src/presentation/router/app_router.dart';
 import 'package:paycron_app/src/core/services/network/api_client.dart';
