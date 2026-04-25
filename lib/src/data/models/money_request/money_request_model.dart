@@ -35,13 +35,16 @@ class MoneyRequestModel {
     return MoneyRequestModel(
       id: json['_id'] as String? ?? '',
       sender: MoneyRequestUser.fromJson(
-          json['sender'] as Map<String, dynamic>? ?? {}),
+        json['sender'] as Map<String, dynamic>? ?? {},
+      ),
       receiver: MoneyRequestUser.fromJson(
-          json['receiver'] as Map<String, dynamic>? ?? {}),
+        json['receiver'] as Map<String, dynamic>? ?? {},
+      ),
       amount: (json['amount'] as num? ?? 0).toDouble(),
       purpose: json['purpose'] as String? ?? '',
       status: json['status'] as String? ?? 'Pending',
-      createdAt: DateTime.tryParse(json['createdAt'] as String? ?? '') ??
+      createdAt:
+          DateTime.tryParse(json['createdAt'] as String? ?? '') ??
           DateTime.now(),
     );
   }
@@ -54,6 +57,7 @@ class MoneyRequestListResponse {
 
   factory MoneyRequestListResponse.fromJson(Map<String, dynamic> json) {
     final raw = json['requests'] as List<dynamic>? ?? [];
+
     return MoneyRequestListResponse(
       requests: raw
           .map((e) => MoneyRequestModel.fromJson(e as Map<String, dynamic>))

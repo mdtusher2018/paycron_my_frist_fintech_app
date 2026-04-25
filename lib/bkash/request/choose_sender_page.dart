@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +6,7 @@ import 'package:paycron_app/src/core/base/failure.dart';
 import 'package:paycron_app/src/core/base/result.dart';
 import 'package:paycron_app/src/core/di/dependency_injection.dart';
 import 'package:paycron_app/src/core/utils/extension/validator_extension.dart';
+import 'package:paycron_app/src/core/utils/logger.dart';
 import 'package:paycron_app/src/presentation/router/routes.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_button.dart';
 import 'package:paycron_app/src/presentation/shared/widgets/common_text.dart';
@@ -21,7 +21,7 @@ class ChooseSenderPage extends ConsumerStatefulWidget {
 
 class _ChooseSenderPageState extends ConsumerState<ChooseSenderPage> {
   final TextEditingController senderTextEditingController =
-      TextEditingController(text: kDebugMode ? "tusher@gmail.com" : null);
+      TextEditingController();
 
   Widget senderItem(BuildContext context) {
     return Container(
@@ -94,8 +94,9 @@ class _ChooseSenderPageState extends ConsumerState<ChooseSenderPage> {
         color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(30.r),
       ),
-      child: const CommonTextField(
+      child: CommonTextField(
         hintText: "Search sender email",
+        controller: senderTextEditingController,
         boarderRadious: 50,
         prefixIcon: Icon(Icons.search),
       ),
@@ -173,6 +174,7 @@ class _ChooseSenderPageState extends ConsumerState<ChooseSenderPage> {
 
   void _reciveRequestMoney() async {
     final email = senderTextEditingController.text;
+    AppLogger.log("==========>>>>>>>>>" + email);
     if (!email.isValidEmail) {
       ref
           .read(snackBarServiceProvider)

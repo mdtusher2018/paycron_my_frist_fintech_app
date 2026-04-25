@@ -5,15 +5,15 @@ class ApiEndpoints {
   static String mapResturant(String resturantName) =>
       "https://places.googleapis.com/v1/places:searchText?query=$resturantName&key=$mapKey";
 
-  static const String baseUrl =
-      'https://paycron-my-frist-fintech-1.onrender.com/';
+  //   static const String baseUrl =
+  //       'https://paycron-my-frist-fintech-1.onrender.com/';
   static const String baseImageUrl =
       'https://paycron-my-frist-fintech-1.onrender.com';
 
-  // static const String baseUrl = 'http://192.168.1.103:3000/';
+  //   static const String baseUrl = 'http://192.168.1.103:3000/';
   // static const String baseImageUrl = 'http://192.168.1.103:3000';
 
-  // static const String baseUrl = 'http://10.10.10.21:3000/';
+  static const String baseUrl = 'http://10.10.10.21:3000/';
 
   static String refreshToken = "auth/refresh-token";
 
@@ -37,10 +37,10 @@ class ApiEndpoints {
 
   static String completeProfile = "user/complete-profile";
 
-  static String requestsSent = "transaction/requests-sent";
-  static String requestsReceived = "transaction/requests-received";
-  static String requestsApprove = "transaction/requests-approve";
-  static String requestsReject = "transaction/requests-reject";
+  static String requestsSent = "transactions/requests-sent";
+  static String requestsReceived = "transactions/requests-received";
+  static String requestsApprove = "transactions/requests-approve";
+  static String requestsReject = "transactions/requests-reject";
 
   // Payment / Card Management
   static String setupIntent = "payment-managment/setup-intent";

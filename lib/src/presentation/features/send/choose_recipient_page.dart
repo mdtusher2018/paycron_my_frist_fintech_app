@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,7 +15,7 @@ import 'package:paycron_app/src/presentation/shared/widgets/common_text_field.da
 class ChooseRecipientPage extends ConsumerWidget {
   ChooseRecipientPage({super.key});
   final TextEditingController recipentTextEditingController =
-      TextEditingController(text: kDebugMode ? "tusher@gmail.com" : null);
+      TextEditingController();
 
   Widget recipientItem(BuildContext context) {
     return Container(
@@ -100,22 +99,21 @@ class ChooseRecipientPage extends ConsumerWidget {
     if (!email.isValidEmail) {
       ref
           .read(snackBarServiceProvider)
-          .showError("Invalid Email",context: ref.context);
+          .showError("Invalid Email", context: ref.context);
       return;
     }
-          // Show loading
-      showDialog(
-        context: ref.context,
-        barrierDismissible: false,
-        builder: (_) => const Center(child: CircularProgressIndicator()),
-      );
+    // Show loading
+    showDialog(
+      context: ref.context,
+      barrierDismissible: false,
+      builder: (_) => const Center(child: CircularProgressIndicator()),
+    );
 
     final response = await ref
         .read(homeUsecaseProvider)
         .checkEmailExists(email: email);
 
-      Navigator.of(ref.context).pop(); // Close loading
-
+    Navigator.of(ref.context).pop(); // Close loading
 
     if (response is Success<bool, Failure>) {
       ref.context.pushNamed(
@@ -125,7 +123,7 @@ class ChooseRecipientPage extends ConsumerWidget {
     } else {
       ref
           .read(snackBarServiceProvider)
-          .showError("User not Exist",context: ref.context);
+          .showError("User not Exist", context: ref.context);
     }
   }
 
@@ -165,7 +163,7 @@ class ChooseRecipientPage extends ConsumerWidget {
               SizedBox(height: 10.h),
               CommonButton(
                 "Send",
-                
+
                 onTap: () {
                   _sendMoney(ref);
                 },

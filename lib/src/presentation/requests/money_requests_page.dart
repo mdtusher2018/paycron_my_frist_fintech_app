@@ -2,25 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:paycron_app/src/data/models/money_request/money_request_model.dart';
+import 'package:paycron_app/src/presentation/requests/money_request_notifier.dart';
 import 'package:paycron_app/src/presentation/shared/themes/colors.dart';
-
-// ─── Providers ───────────────────────────────────────────────────────────────
-
-final sentRequestsProvider = FutureProvider<List<MoneyRequestModel>>((
-  ref,
-) async {
-  // TODO: wire to requestUsecaseProvider
-  await Future.delayed(const Duration(milliseconds: 600));
-  return [];
-});
-
-final receivedRequestsProvider = FutureProvider<List<MoneyRequestModel>>((
-  ref,
-) async {
-  // TODO: wire to requestUsecaseProvider
-  await Future.delayed(const Duration(milliseconds: 600));
-  return [];
-});
 
 // ─── Page ────────────────────────────────────────────────────────────────────
 
@@ -39,6 +22,10 @@ class _MoneyRequestsPageState extends ConsumerState<MoneyRequestsPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+
+    Future.microtask(() {
+      ref.read(moneyRequestNotifierProvider.notifier).loadRequests();
+    });
   }
 
   @override
@@ -105,14 +92,18 @@ class _MoneyRequestsPageState extends ConsumerState<MoneyRequestsPage>
 class _ReceivedTab extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(receivedRequestsProvider);
+    final state = ref.watch(moneyRequestNotifierProvider);
+
     return state.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (e, _) => _ErrorState(
         message: e.toString(),
-        onRetry: () => ref.refresh(receivedRequestsProvider),
+        onRetry: () =>
+            ref.read(moneyRequestNotifierProvider.notifier).loadRequests(),
       ),
-      data: (requests) {
+      data: (data) {
+        final requests = data?.received ?? [];
+
         if (requests.isEmpty) {
           return _EmptyState(
             icon: Icons.inbox_outlined,
@@ -121,6 +112,7 @@ class _ReceivedTab extends ConsumerWidget {
                 'When someone requests money from you,\nit will appear here.',
           );
         }
+
         return ListView.separated(
           padding: const EdgeInsets.all(20),
           itemCount: requests.length,
@@ -133,18 +125,21 @@ class _ReceivedTab extends ConsumerWidget {
 }
 
 // ─── Sent Tab ─────────────────────────────────────────────────────────────────
-
 class _SentTab extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(sentRequestsProvider);
+    final state = ref.watch(moneyRequestNotifierProvider);
+
     return state.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (e, _) => _ErrorState(
         message: e.toString(),
-        onRetry: () => ref.refresh(sentRequestsProvider),
+        onRetry: () =>
+            ref.read(moneyRequestNotifierProvider.notifier).loadRequests(),
       ),
-      data: (requests) {
+      data: (data) {
+        final requests = data?.sent ?? [];
+
         if (requests.isEmpty) {
           return _EmptyState(
             icon: Icons.send_outlined,
@@ -152,6 +147,7 @@ class _SentTab extends ConsumerWidget {
             subtitle: 'Requests you send to others\nwill appear here.',
           );
         }
+
         return ListView.separated(
           padding: const EdgeInsets.all(20),
           itemCount: requests.length,
@@ -162,14 +158,17 @@ class _SentTab extends ConsumerWidget {
     );
   }
 }
-
 // ─── Received Request Card ────────────────────────────────────────────────────
 
 class _ReceivedRequestCard extends ConsumerWidget {
   final MoneyRequestModel request;
   const _ReceivedRequestCard({required this.request});
 
-  Future<void> _showApproveDialog(BuildContext context, WidgetRef ref) async {
+  Future<void> _showApproveDialog(
+    BuildContext context,
+    WidgetRef ref, {
+    required String requestId,
+  }) async {
     final pinCtrl = TextEditingController();
     final approved = await showDialog<bool>(
       context: context,
@@ -208,6 +207,9 @@ class _ReceivedRequestCard extends ConsumerWidget {
       ),
     );
     if (approved == true && pinCtrl.text.isNotEmpty) {
+      ref
+          .read(moneyRequestNotifierProvider.notifier)
+          .approveRequest(pin: pinCtrl.text, requestId: requestId);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -216,7 +218,7 @@ class _ReceivedRequestCard extends ConsumerWidget {
           backgroundColor: Colors.green,
         ),
       );
-      // ref.refresh(receivedRequestsProvider);
+      ref.read(moneyRequestNotifierProvider.notifier).refreshRequests();
     }
   }
 
@@ -249,7 +251,7 @@ class _ReceivedRequestCard extends ConsumerWidget {
           backgroundColor: Colors.red,
         ),
       );
-      // ref.refresh(receivedRequestsProvider);
+      ref.read(moneyRequestNotifierProvider.notifier).refreshRequests();
     }
   }
 
@@ -377,7 +379,8 @@ class _ReceivedRequestCard extends ConsumerWidget {
                       ),
                       elevation: 0,
                     ),
-                    onPressed: () => _showApproveDialog(context, ref),
+                    onPressed: () =>
+                        _showApproveDialog(context, ref, requestId: request.id),
                     child: const Text('Approve'),
                   ),
                 ),
